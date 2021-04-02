@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <source>
+	<info>
+		<package>my.package</package>
+		<sourcetype>CLASS</sourcetype>
+		<modifier>ABSTRACT</modifier>
+		<name>AbstractBuffer</name>
+		<template>B</template>
+	</info>
+	
+	<fields>
+		
+	</fields>
+	
+	<methods>
+		
+	</methods>
 	
 </source>
