@@ -3,19 +3,20 @@ package com.nullpointerworks.javadoc.webmaker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModuleMaker 
+import com.nullpointerworks.javadoc.webmaker.module.Exported;
+import com.nullpointerworks.javadoc.webmaker.module.Required;
+
+public class ModuleMaker extends LineBuilder
 {
 	private String name = "";
 	private String desc = "";
 	private String vers = "";
 	private String auth = "";
-	private List<String> lines;
 	private List<Exported> exports;
 	private List<Required> required;
 	
 	public ModuleMaker()
 	{
-		lines = new ArrayList<String>();
 		exports = new ArrayList<Exported>();
 		required = new ArrayList<Required>();
 	}
@@ -35,34 +36,19 @@ public class ModuleMaker
 	public void setExport(Exported e) {exports.add(e);}
 	public void setRequired(Required r) {required.add(r);}
 	
-	public List<String> getLines()
+	// ============================================================
+	//
+	// ============================================================
+	
+	public List<String> getWebText()
 	{
-		lines.clear();
+		clear();
 		makeHead();
 		makeDescription();
-		
-		
+		makeExported();
 		
 		makeEnd();
-		return lines;
-	}
-	
-	private void addLine(String txt)
-	{
-		addLine(txt,0);
-	}
-	
-	private void addLine(String txt, int padding)
-	{
-		String pad = createPadding(padding);
-		lines.add(pad+txt+"\r\n");
-	}
-	
-	private String createPadding(int p) 
-	{
-		String res = "";
-		for (int i=0,l=p; i<l; i++) res += "    ";
-		return res;
+		return getLines();
 	}
 	
 	// ============================================================
@@ -85,6 +71,29 @@ public class ModuleMaker
 		addLine("            <div class=\"header vdark petrol-font\">");
 		addLine("                Module "+name);
 		addLine("            </div>");
+	}
+	
+	private void makeExported()
+	{
+		addLine("            <!-- package section -->\r\n");
+		addLine("            <div class=\"section dark\">\r\n");
+		addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
+		addLine("                <div class=\"header small yellow\">Exports</div>\r\n");
+		
+		
+
+		addLine("            <div class=\"rTable\">");
+		addLine("                <div class=\"rTableRow\">");
+		addLine("                    <div class=\"rTableHead\"><strong>Package</strong></div>");
+		addLine("                </div>");
+		
+		for (Exported e : exports)
+		{
+			addLines( e.getWebText() , 5);
+		}
+
+		addLine("            </div>");
+		addLine("        </div>");
 	}
 	
 	private void makeDescription()
