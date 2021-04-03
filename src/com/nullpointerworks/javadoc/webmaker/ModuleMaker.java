@@ -1,11 +1,7 @@
 package com.nullpointerworks.javadoc.webmaker;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.nullpointerworks.util.file.textfile.TextFile;
-import com.nullpointerworks.util.file.textfile.TextFileParser;
 
 public class ModuleMaker 
 {
@@ -13,11 +9,13 @@ public class ModuleMaker
 	private String desc = "";
 	private String vers = "";
 	private String auth = "";
+	private List<String> lines;
 	private List<Exported> exports;
 	private List<Required> required;
 	
 	public ModuleMaker()
 	{
+		lines = new ArrayList<String>();
 		exports = new ArrayList<Exported>();
 		required = new ArrayList<Required>();
 	}
@@ -37,26 +35,27 @@ public class ModuleMaker
 	public void setExport(Exported e) {exports.add(e);}
 	public void setRequired(Required r) {required.add(r);}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void save(String path) throws IOException
+	public List<String> getLines()
 	{
-		TextFile tf = new TextFile();
+		lines.clear();
+		makeHead();
+		makeDescription();
 		
 		
 		
-		tf.setEncoding("UTF-8");
-		TextFileParser.write(path, tf);
+		makeEnd();
+		return lines;
+	}
+	
+	private void addLine(String txt)
+	{
+		addLine(txt,0);
+	}
+	
+	private void addLine(String txt, int padding)
+	{
+		String pad = createPadding(padding);
+		lines.add(pad+txt+"\r\n");
 	}
 	
 	private String createPadding(int p) 
@@ -64,5 +63,45 @@ public class ModuleMaker
 		String res = "";
 		for (int i=0,l=p; i<l; i++) res += "    ";
 		return res;
+	}
+	
+	// ============================================================
+	//
+	// ============================================================
+	
+	private void makeHead()
+	{
+		addLine("<!DOCTYPE html>");
+		addLine("<html>");
+		addLine("    <head>");
+		addLine("        <title>"+name+" - API Reference - Nullpointer Works</title>");
+		addLine("        <meta charset=\"utf-8\"/>");
+		addLine("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>");
+		addLine("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/style.css\"/>");
+		addLine("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/layout.css\"/>");
+		addLine("    </head>");
+		addLine("    <body>");
+		addLine("        <div class=\"container\">");
+		addLine("            <div class=\"header vdark petrol-font\">");
+		addLine("                Module "+name);
+		addLine("            </div>");
+	}
+	
+	private void makeDescription()
+	{
+		addLine("            <div class=\"content midlight\">");
+		addLine("                <div class=\"desc\">");
+		addLine("                    "+desc);
+		addLine("                </div>");
+		addLine("                <div class=\"desc mark\">Version:<div class=\"marktext\">"+vers+"</div></div>");
+		addLine("                <div class=\"desc mark\">Author:<div class=\"marktext\">"+auth+"</div></div>");
+		addLine("            </div>");
+	}
+	
+	private void makeEnd()
+	{
+		addLine("        </div>");
+		addLine("    </body>");
+		addLine("</html>");
 	}
 }
