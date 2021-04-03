@@ -10,9 +10,9 @@ public class MainWebMaker
 		
 		
 		ModuleMaker mmaker = new ModuleMaker();
-		mmaker.setName("");
+		mmaker.setName("libnpw.test");
 		mmaker.setAuthor("Michiel Drost - Nullpointer Works");
-		mmaker.setVersion("");
+		mmaker.setVersion("1.0.0");
 		
 		
 		

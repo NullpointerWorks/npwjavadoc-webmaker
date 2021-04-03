@@ -6,18 +6,19 @@ import com.nullpointerworks.javadoc.webmaker.LineBuilder;
 
 public class Required extends LineBuilder
 {
-	private String fileName;
-	private String packageName;
+	private String name;
+	private String modifier;
 	
 	public Required()
 	{
 		
 	}
 	
-	public String getFileName() {return fileName;}
-	public String getPackageName() {return packageName;}
-	public void setFileName(String f) {fileName = f;}
-	public void getPackageName(String p) {packageName = p;}
+	public String getName(){return name;}
+	public String getModifier(){return modifier;}
+	
+	public void setName(String f) {name = f;}
+	public void setModifier(String p) {modifier = p;}
 	
 	public List<String> getWebText()
 	{
@@ -33,7 +34,8 @@ public class Required extends LineBuilder
 	private void makeExported()
 	{
 		addLine("<div class=\"rTableRow\">");
-		addLine("    <div class=\"rTableCell\"><a href=\""+getFileName()+"\">"+getPackageName()+"</a></div>");
+		addLine("    <div class=\"rTableCell\">"+getModifier()+"</div>");
+		addLine("    <div class=\"rTableCell\">"+getName()+"</div>");
 		addLine("</div>");
 	}
 }

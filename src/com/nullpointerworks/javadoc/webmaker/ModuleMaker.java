@@ -46,7 +46,7 @@ public class ModuleMaker extends LineBuilder
 		makeHead();
 		makeDescription();
 		makeExported();
-		
+		makeModuleList();
 		makeEnd();
 		return getLines();
 	}
@@ -73,29 +73,6 @@ public class ModuleMaker extends LineBuilder
 		addLine("            </div>");
 	}
 	
-	private void makeExported()
-	{
-		addLine("            <!-- package section -->\r\n");
-		addLine("            <div class=\"section dark\">\r\n");
-		addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
-		addLine("                <div class=\"header small yellow\">Exports</div>\r\n");
-		
-		
-
-		addLine("            <div class=\"rTable\">");
-		addLine("                <div class=\"rTableRow\">");
-		addLine("                    <div class=\"rTableHead\"><strong>Package</strong></div>");
-		addLine("                </div>");
-		
-		for (Exported e : exports)
-		{
-			addLines( e.getWebText() , 5);
-		}
-
-		addLine("            </div>");
-		addLine("        </div>");
-	}
-	
 	private void makeDescription()
 	{
 		addLine("            <div class=\"content midlight\">");
@@ -104,6 +81,47 @@ public class ModuleMaker extends LineBuilder
 		addLine("                </div>");
 		addLine("                <div class=\"desc mark\">Version:<div class=\"marktext\">"+vers+"</div></div>");
 		addLine("                <div class=\"desc mark\">Author:<div class=\"marktext\">"+auth+"</div></div>");
+		addLine("            </div>");
+	}
+	
+	private void makeExported()
+	{
+		addLine("            <div class=\"section dark\">\r\n");
+		addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
+		addLine("                <div class=\"header small yellow\">Exports</div>\r\n");
+		
+		addLine("                <div class=\"rTable\">");
+		addLine("                    <div class=\"rTableRow\">");
+		addLine("                        <div class=\"rTableHead\"><strong>Package</strong></div>");
+		addLine("                    </div>");
+		
+		for (Exported e : exports)
+		{
+			addLines( e.getWebText() , 5);
+		}
+
+		addLine("                </div>");
+		addLine("            </div>");
+	}
+	
+	private void makeModuleList()
+	{
+		addLine("            <div class=\"section dark\">\r\n");
+		addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
+		addLine("                <div class=\"header small yellow\">Requires</div>\r\n");
+		
+		addLine("                <div class=\"rTable\">");
+		addLine("                    <div class=\"rTableRow\">");
+		addLine("                        <div class=\"rTableHead\" style=\"width:20%;\"><strong>Modifier</strong></div>");
+		addLine("                        <div class=\"rTableHead\"><strong>Module</strong></div>");
+		addLine("                    </div>");
+		
+		for (Required r : required)
+		{
+			addLines( r.getWebText() , 5);
+		}
+
+		addLine("                </div>");
 		addLine("            </div>");
 	}
 	
