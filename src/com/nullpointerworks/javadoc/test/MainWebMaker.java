@@ -5,6 +5,9 @@ import java.util.List;
 
 import com.nullpointerworks.javadoc.webmaker.ModuleMaker;
 import com.nullpointerworks.javadoc.webmaker.module.Exported;
+import com.nullpointerworks.javadoc.webmaker.module.Required;
+import com.nullpointerworks.util.file.textfile.TextFile;
+import com.nullpointerworks.util.file.textfile.TextFileParser;
 
 import exp.nullpointerworks.xml.Document;
 import exp.nullpointerworks.xml.Element;
@@ -78,10 +81,31 @@ public class MainWebMaker
 			List<Element> reqs = requires.getChildren();
 			for (Element r : reqs)
 			{
-				
+				mmaker.setRequired( new Required(r.getText(),"") );
 			}
 		}
 		
+		List<String> page = mmaker.getWebText();
+		save("web/module.html", page);
+	}
+	
+	public void save(String path, List<String> page)
+	{
+		TextFile tf = new TextFile();
+		tf.setEncoding("UTF-8");
+		for (String line : page)
+		{
+			tf.addLine(line);
+		}
+		
+		try 
+		{
+			TextFileParser.write(path, tf);
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public Document load(String path)

@@ -9,9 +9,12 @@ public class Required extends LineBuilder
 	private String name;
 	private String modifier;
 	
-	public Required()
+	public Required() {}
+	
+	public Required(String n, String m)
 	{
-		
+		setName(n);
+		setModifier(m);
 	}
 	
 	public String getName(){return name;}

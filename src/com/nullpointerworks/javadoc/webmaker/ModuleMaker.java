@@ -80,19 +80,28 @@ public class ModuleMaker extends LineBuilder
 	private void makeDescription()
 	{
 		addLine("            <div class=\"content midlight\">");
-		addLine("                <div class=\"desc\">");
-		addLine("                    "+desc);
-		addLine("                </div>");
 		
+		if (desc!=null)
+		if (desc.length()>0)
+		{
+			addLine("                <div class=\"desc\">");
+			addLine("                    "+desc);
+			addLine("                </div>");
+		}
+
+		if (vers!=null)
 		if (vers.length()>0)
 		addLine("                <div class=\"desc mark\">Version:<div class=\"marktext\">"+vers+"</div></div>");
-		
+
+		if (auth!=null)
 		if (auth.length()>0)
 		addLine("                <div class=\"desc mark\">Author:<div class=\"marktext\">"+auth+"</div></div>");
-		
+
+		if (since!=null)
 		if (since.length()>0)
 		addLine("                <div class=\"desc mark\">Since:<div class=\"marktext\">"+since+"</div></div>");
 		
+		if (see!=null)
 		if (see.length()>0)
 		addLine("                <div class=\"desc mark\">See Also:<div class=\"marktext\">"+see+"</div></div>");
 		
@@ -101,43 +110,49 @@ public class ModuleMaker extends LineBuilder
 	
 	private void makeExported()
 	{
-		addLine("            <div class=\"section dark\">\r\n");
-		addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
-		addLine("                <div class=\"header small yellow\">Exports</div>\r\n");
-		
-		addLine("                <div class=\"rTable\">");
-		addLine("                    <div class=\"rTableRow\">");
-		addLine("                        <div class=\"rTableHead\"><strong>Package</strong></div>");
-		addLine("                    </div>");
-		
-		for (Exported e : exports)
+		if (exports.size()>0)
 		{
-			addLines( e.getWebText() , 5);
-		}
+			addLine("            <div class=\"section dark\">\r\n");
+			addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
+			addLine("                <div class=\"header small yellow\">Exports</div>\r\n");
+			
+			addLine("                <div class=\"rTable\">");
+			addLine("                    <div class=\"rTableRow\">");
+			addLine("                        <div class=\"rTableHead\"><strong>Package</strong></div>");
+			addLine("                    </div>");
+			
+			for (Exported e : exports)
+			{
+				addLines( e.getWebText() , 5);
+			}
 
-		addLine("                </div>");
-		addLine("            </div>");
+			addLine("                </div>");
+			addLine("            </div>");
+		}
 	}
 	
 	private void makeModuleList()
 	{
-		addLine("            <div class=\"section dark\">\r\n");
-		addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
-		addLine("                <div class=\"header small yellow\">Requires</div>\r\n");
-		
-		addLine("                <div class=\"rTable\">");
-		addLine("                    <div class=\"rTableRow\">");
-		addLine("                        <div class=\"rTableHead\" style=\"width:20%;\"><strong>Modifier</strong></div>");
-		addLine("                        <div class=\"rTableHead\"><strong>Module</strong></div>");
-		addLine("                    </div>");
-		
-		for (Required r : required)
+		if (required.size()>0)
 		{
-			addLines( r.getWebText() , 5);
-		}
+			addLine("            <div class=\"section dark\">\r\n");
+			addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
+			addLine("                <div class=\"header small yellow\">Requires</div>\r\n");
+			
+			addLine("                <div class=\"rTable\">");
+			addLine("                    <div class=\"rTableRow\">");
+			addLine("                        <div class=\"rTableHead\" style=\"width:20%;\"><strong>Modifier</strong></div>");
+			addLine("                        <div class=\"rTableHead\"><strong>Module</strong></div>");
+			addLine("                    </div>");
+			
+			for (Required r : required)
+			{
+				addLines( r.getWebText() , 5);
+			}
 
-		addLine("                </div>");
-		addLine("            </div>");
+			addLine("                </div>");
+			addLine("            </div>");
+		}
 	}
 	
 	private void makeEnd()
