@@ -12,6 +12,8 @@ public class ModuleMaker extends LineBuilder
 	private String desc = "";
 	private String vers = "";
 	private String auth = "";
+	private String since = "";
+	private String see = "";
 	private List<Exported> exports;
 	private List<Required> required;
 	
@@ -24,7 +26,9 @@ public class ModuleMaker extends LineBuilder
 	public void setName(String n) {name=n;}
 	public void setVersion(String v) {vers=v;}
 	public void setAuthor(String a) {auth=a;}
-	public void setDescription(String[] lines) 
+	public void setSince(String s) {since=s;}
+	public void setSee(String s) {see=s;}
+	public void setDescription(String... lines) 
 	{
 		String padding = createPadding(5);
 		desc = "";
@@ -79,8 +83,19 @@ public class ModuleMaker extends LineBuilder
 		addLine("                <div class=\"desc\">");
 		addLine("                    "+desc);
 		addLine("                </div>");
+		
+		if (vers.length()>0)
 		addLine("                <div class=\"desc mark\">Version:<div class=\"marktext\">"+vers+"</div></div>");
+		
+		if (auth.length()>0)
 		addLine("                <div class=\"desc mark\">Author:<div class=\"marktext\">"+auth+"</div></div>");
+		
+		if (since.length()>0)
+		addLine("                <div class=\"desc mark\">Since:<div class=\"marktext\">"+since+"</div></div>");
+		
+		if (see.length()>0)
+		addLine("                <div class=\"desc mark\">See Also:<div class=\"marktext\">"+see+"</div></div>");
+		
 		addLine("            </div>");
 	}
 	

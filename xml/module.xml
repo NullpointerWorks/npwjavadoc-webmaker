@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<source>
+	<info>
+		<type>MODULE</type>
+		<name>libnpw.test</name>
+		<author>Michiel Drost - Nullpointer Works</author>
+		<version>1.0.0</version>
+		<since>1.0.0</since>
+		<see></see>
+		<comment></comment>
+	</info>
+	
+	<exports>
+		<export>com.nullpointerworks.test</export>
+	</exports>
+	
+	<requires>
+		<require>libnpw.test</require>
+	</requires>
+	
+</source>
