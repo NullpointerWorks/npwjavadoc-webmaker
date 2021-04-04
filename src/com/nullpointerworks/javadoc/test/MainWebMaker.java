@@ -1,8 +1,10 @@
 package com.nullpointerworks.javadoc.test;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.nullpointerworks.javadoc.webmaker.ModuleMaker;
+import com.nullpointerworks.javadoc.webmaker.module.Exported;
 
 import exp.nullpointerworks.xml.Document;
 import exp.nullpointerworks.xml.Element;
@@ -60,8 +62,25 @@ public class MainWebMaker
 			if (comment!=null) mmaker.setDescription(comment.getText());
 		}
 		
+		Element exports = root.getChild("exports");
+		if (exports!=null)
+		{
+			List<Element> exps = exports.getChildren();
+			for (Element e : exps)
+			{
+				mmaker.setExport( new Exported("",e.getText()) );
+			}
+		}
 		
-		
+		Element requires = root.getChild("requires");
+		if (requires!=null)
+		{
+			List<Element> reqs = requires.getChildren();
+			for (Element r : reqs)
+			{
+				
+			}
+		}
 		
 	}
 	

@@ -9,9 +9,12 @@ public class Exported extends LineBuilder
 	private String fileName;
 	private String packageName;
 	
-	public Exported()
+	public Exported() {}
+	
+	public Exported(String f, String p)
 	{
-		
+		setFileName(f);
+		getPackageName(p);
 	}
 	
 	public String getFileName() {return fileName;}
