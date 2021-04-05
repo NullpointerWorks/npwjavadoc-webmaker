@@ -1,5 +1,6 @@
 package com.nullpointerworks.javadoc.test;
 
+import com.nullpointerworks.javadoc.webmaker.ClassMaker;
 import com.nullpointerworks.javadoc.webmaker.FileIO;
 import com.nullpointerworks.javadoc.webmaker.ModuleMaker;
 
@@ -24,6 +25,12 @@ public class MainWebMaker
 			return;
 		}
 		
+		ClassMaker cmaker = new ClassMaker();
+		if (cmaker.isClass(doc))
+		{
+			cmaker.makeClass(doc);
+			return;
+		}
 		
 		
 		

@@ -12,6 +12,8 @@
 	<fields>
 		<field>
 			<type>int</type>
+			<visibility>PUBLIC</visibility>
+			<modifier></modifier>
 			<name>myInteger</name>
 			<author>Michiel Drost - Nullpointer Works</author>
 			<version>1.0.0</version>
@@ -20,14 +22,18 @@
 			<comment>Testing commentary.</comment>
 		</field>
 		
-		
-		
-		
-		
-		
 	</fields>
 	
+	<constructors>
+		<constructor>
+			
+		</constructor>
+	</constructors>
+	
 	<methods>
+		<method>
+			
+		</method>
 		
 	</methods>
 	

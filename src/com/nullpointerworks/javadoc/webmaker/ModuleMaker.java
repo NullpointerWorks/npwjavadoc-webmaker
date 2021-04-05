@@ -22,8 +22,8 @@ public class ModuleMaker
 	public void makeModule(Document doc)
 	{
 		ModuleBuilder mmaker = new ModuleBuilder();
-		
 		Element root = doc.getRootElement();
+		
 		Element info = root.getChild("info");
 		if (info!=null)
 		{
