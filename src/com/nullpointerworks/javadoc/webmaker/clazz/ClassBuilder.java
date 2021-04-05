@@ -3,40 +3,24 @@ package com.nullpointerworks.javadoc.webmaker.clazz;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nullpointerworks.javadoc.webmaker.ItemInformation;
 import com.nullpointerworks.javadoc.webmaker.LineBuilder;
 
-public class ClassBuilder
+public class ClassBuilder extends ItemInformation
 {
 	private LineBuilder builder;
-	
-	private String name = "";
-	private String desc = "";
-	private String vers = "";
-	private String auth = "";
-	private String since = "";
-	private String see = "";
+	private List<Field> fields;
+	private List<Method> methods;
 	
 	public ClassBuilder()
 	{
 		builder = new LineBuilder();
+		fields = new ArrayList<Field>();
+		methods = new ArrayList<Method>();
 	}
-	
-	public void setName(String n) {name=n;}
-	public void setVersion(String v) {vers=v;}
-	public void setAuthor(String a) {auth=a;}
-	public void setSince(String s) {since=s;}
-	public void setSee(String s) {see=s;}
-	public void setDescription(String... lines) 
-	{
-		String padding = builder.createPadding(5);
-		desc = "";
-		for (String l : lines)
-		{
-			if (l!=null)
-			if (l.length()>0)
-				desc += padding+l+"<br/>\r\n";
-		}
-	}
+
+	public void setField(Field e) {fields.add(e);}
+	public void setMethod(Method e) {methods.add(e);}
 	
 	// ============================================================
 	//
@@ -45,8 +29,11 @@ public class ClassBuilder
 	public List<String> getWebText()
 	{
 		builder.clear();
-		makeHead("Class", name);
+		makeHead("Class", getName() );
 		makeDescription();
+		
+		
+		
 		
 		
 		makeEnd();
@@ -79,32 +66,36 @@ public class ClassBuilder
 	{
 		builder.addLine("            <div class=\"content midlight\">");
 		
-		if (desc!=null)
-		if (desc.length()>0)
+		if (getDescription()!=null)
+		if (getDescription().length()>0)
 		{
 			builder.addLine("                <div class=\"desc\">");
-			builder.addLine("                    "+desc);
+			builder.addLine("                    "+getDescription());
 			builder.addLine("                </div>");
 		}
 
-		if (vers!=null)
-		if (vers.length()>0)
-			builder.addLine("                <div class=\"desc mark\">Version:<div class=\"marktext\">"+vers+"</div></div>");
+		if (getVersion()!=null)
+		if (getVersion().length()>0)
+			builder.addLine("                <div class=\"desc mark\">Version:<div class=\"marktext\">"+getVersion()+"</div></div>");
 
-		if (auth!=null)
-		if (auth.length()>0)
-			builder.addLine("                <div class=\"desc mark\">Author:<div class=\"marktext\">"+auth+"</div></div>");
+		if (getAuthor()!=null)
+		if (getAuthor().length()>0)
+			builder.addLine("                <div class=\"desc mark\">Author:<div class=\"marktext\">"+getAuthor()+"</div></div>");
 
-		if (since!=null)
-		if (since.length()>0)
-			builder.addLine("                <div class=\"desc mark\">Since:<div class=\"marktext\">"+since+"</div></div>");
+		if (getSince()!=null)
+		if (getSince().length()>0)
+			builder.addLine("                <div class=\"desc mark\">Since:<div class=\"marktext\">"+getSince()+"</div></div>");
 		
-		if (see!=null)
-		if (see.length()>0)
-			builder.addLine("                <div class=\"desc mark\">See Also:<div class=\"marktext\">"+see+"</div></div>");
+		if (getSeeAlso()!=null)
+		if (getSeeAlso().length()>0)
+			builder.addLine("                <div class=\"desc mark\">See Also:<div class=\"marktext\">"+getSeeAlso()+"</div></div>");
 		
 		builder.addLine("            <br></div>");
 	}
+	
+	
+	
+	
 	
 	private void makeEnd()
 	{

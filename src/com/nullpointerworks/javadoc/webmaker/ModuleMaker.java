@@ -38,7 +38,7 @@ public class ModuleMaker
 			if (author!=null) mmaker.setAuthor(author.getText());
 			if (version!=null) mmaker.setVersion(version.getText());
 			if (since!=null) mmaker.setSince(since.getText());
-			if (see!=null) mmaker.setSee(see.getText());
+			if (see!=null) mmaker.setSeeAlso(see.getText());
 			if (comment!=null) mmaker.setDescription(comment.getText());
 		}
 		
