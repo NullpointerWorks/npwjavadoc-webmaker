@@ -1,164 +1,68 @@
 package com.nullpointerworks.javadoc.webmaker;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.nullpointerworks.javadoc.webmaker.module.Exported;
+import com.nullpointerworks.javadoc.webmaker.module.ModuleBuilder;
 import com.nullpointerworks.javadoc.webmaker.module.Required;
 
-public class ModuleMaker extends LineBuilder
+import exp.nullpointerworks.xml.Document;
+import exp.nullpointerworks.xml.Element;
+
+public class ModuleMaker 
 {
-	private String name = "";
-	private String desc = "";
-	private String vers = "";
-	private String auth = "";
-	private String since = "";
-	private String see = "";
-	private List<Exported> exports;
-	private List<Required> required;
-	
-	public ModuleMaker()
+	public boolean isModule(Document doc)
 	{
-		exports = new ArrayList<Exported>();
-		required = new ArrayList<Required>();
+		Element root = doc.getRootElement();
+		Element info = root.getChild("info");
+		Element type = info.getChild("type");
+		return type.getText().equalsIgnoreCase("module");
 	}
 	
-	public void setName(String n) {name=n;}
-	public void setVersion(String v) {vers=v;}
-	public void setAuthor(String a) {auth=a;}
-	public void setSince(String s) {since=s;}
-	public void setSee(String s) {see=s;}
-	public void setDescription(String... lines) 
+	public void makeModule(Document doc)
 	{
-		String padding = createPadding(5);
-		desc = "";
-		for (String l : lines)
-		{
-			desc += padding+l+"<br/>\r\n";
-		}
-	}
-	public void setExport(Exported e) {exports.add(e);}
-	public void setRequired(Required r) {required.add(r);}
-	
-	// ============================================================
-	//
-	// ============================================================
-	
-	public List<String> getWebText()
-	{
-		clear();
-		makeHead();
-		makeDescription();
-		makeExported();
-		makeModuleList();
-		makeEnd();
-		return getLines();
-	}
-	
-	// ============================================================
-	//
-	// ============================================================
-	
-	private void makeHead()
-	{
-		addLine("<!DOCTYPE html>");
-		addLine("<html>");
-		addLine("    <head>");
-		addLine("        <title>"+name+" - API Reference - Nullpointer Works</title>");
-		addLine("        <meta charset=\"utf-8\"/>");
-		addLine("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>");
-		addLine("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/style.css\"/>");
-		addLine("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/layout.css\"/>");
-		addLine("    </head>");
-		addLine("    <body>");
-		addLine("        <div class=\"container\">");
-		addLine("            <div class=\"header vdark petrol-font\">");
-		addLine("                Module "+name);
-		addLine("            </div>");
-	}
-	
-	private void makeDescription()
-	{
-		addLine("            <div class=\"content midlight\">");
+		ModuleBuilder mmaker = new ModuleBuilder();
 		
-		if (desc!=null)
-		if (desc.length()>0)
+		Element root = doc.getRootElement();
+		Element info = root.getChild("info");
+		if (info!=null)
 		{
-			addLine("                <div class=\"desc\">");
-			addLine("                    "+desc);
-			addLine("                </div>");
-		}
-
-		if (vers!=null)
-		if (vers.length()>0)
-		addLine("                <div class=\"desc mark\">Version:<div class=\"marktext\">"+vers+"</div></div>");
-
-		if (auth!=null)
-		if (auth.length()>0)
-		addLine("                <div class=\"desc mark\">Author:<div class=\"marktext\">"+auth+"</div></div>");
-
-		if (since!=null)
-		if (since.length()>0)
-		addLine("                <div class=\"desc mark\">Since:<div class=\"marktext\">"+since+"</div></div>");
-		
-		if (see!=null)
-		if (see.length()>0)
-		addLine("                <div class=\"desc mark\">See Also:<div class=\"marktext\">"+see+"</div></div>");
-		
-		addLine("            </div>");
-	}
-	
-	private void makeExported()
-	{
-		if (exports.size()>0)
-		{
-			addLine("            <div class=\"section dark\">\r\n");
-			addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
-			addLine("                <div class=\"header small yellow\">Exports</div>\r\n");
+			Element name = info.getChild("name");
+			Element author = info.getChild("author");
+			Element version = info.getChild("version");
+			Element since = info.getChild("since");
+			Element see = info.getChild("see");
+			Element comment = info.getChild("comment");
 			
-			addLine("                <div class=\"rTable\">");
-			addLine("                    <div class=\"rTableRow\">");
-			addLine("                        <div class=\"rTableHead\"><strong>Package</strong></div>");
-			addLine("                    </div>");
-			
-			for (Exported e : exports)
+			if (name!=null) mmaker.setName(name.getText());
+			if (author!=null) mmaker.setAuthor(author.getText());
+			if (version!=null) mmaker.setVersion(version.getText());
+			if (since!=null) mmaker.setSince(since.getText());
+			if (see!=null) mmaker.setSee(see.getText());
+			if (comment!=null) mmaker.setDescription(comment.getText());
+		}
+		
+		Element exports = root.getChild("exports");
+		if (exports!=null)
+		{
+			List<Element> exps = exports.getChildren();
+			for (Element e : exps)
 			{
-				addLines( e.getWebText() , 5);
+				mmaker.setExport( new Exported("",e.getText()) );
 			}
-
-			addLine("                </div>");
-			addLine("            </div>");
 		}
-	}
-	
-	private void makeModuleList()
-	{
-		if (required.size()>0)
+		
+		Element requires = root.getChild("requires");
+		if (requires!=null)
 		{
-			addLine("            <div class=\"section dark\">\r\n");
-			addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
-			addLine("                <div class=\"header small yellow\">Requires</div>\r\n");
-			
-			addLine("                <div class=\"rTable\">");
-			addLine("                    <div class=\"rTableRow\">");
-			addLine("                        <div class=\"rTableHead\" style=\"width:20%;\"><strong>Modifier</strong></div>");
-			addLine("                        <div class=\"rTableHead\"><strong>Module</strong></div>");
-			addLine("                    </div>");
-			
-			for (Required r : required)
+			List<Element> reqs = requires.getChildren();
+			for (Element r : reqs)
 			{
-				addLines( r.getWebText() , 5);
+				mmaker.setRequired( new Required(r.getText(),"") );
 			}
-
-			addLine("                </div>");
-			addLine("            </div>");
 		}
-	}
-	
-	private void makeEnd()
-	{
-		addLine("        </div>");
-		addLine("    </body>");
-		addLine("</html>");
+		
+		List<String> page = mmaker.getWebText();
+		FileIO.save("web/module.html", page);
 	}
 }

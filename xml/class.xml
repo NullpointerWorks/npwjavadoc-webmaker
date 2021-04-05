@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <source>
 	<info>
+		<type>CLASS</type>
 		<package>my.package</package>
-		<sourcetype>CLASS</sourcetype>
-		<modifier>ABSTRACT</modifier>
 		<name>AbstractBuffer</name>
-		<template>B</template>
+		<modifier>ABSTRACT</modifier>
+		<template>A</template>
+		<comment>Testing commentary.</comment>
 	</info>
 	
 	<fields>
+		<field>
+			<type>int</type>
+			<name>myInteger</name>
+			<author>Michiel Drost - Nullpointer Works</author>
+			<version>1.0.0</version>
+			<since></since>
+			<see></see>
+			<comment>Testing commentary.</comment>
+		</field>
+		
+		
+		
+		
+		
 		
 	</fields>
 	
