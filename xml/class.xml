@@ -2,10 +2,13 @@
 <source>
 	<info>
 		<type>CLASS</type>
+		<module>libnpw.test</module>
 		<package>my.package</package>
 		<modifier>ABSTRACT</modifier>
 		<template>A</template>
+		<template>B</template>
 		<name>AbstractBuffer</name>
+		
 		<author>Michiel Drost - Nullpointer Works</author>
 		<version>1.0.0</version>
 		<since></since>
@@ -19,15 +22,14 @@
 			<visibility>PUBLIC</visibility>
 			<modifier></modifier>
 			<name>myInteger</name>
+			<value>0</value>
+			
 			<author></author>
 			<version>1.0.0</version>
 			<since></since>
 			<see></see>
 			<comment>Testing commentary.</comment>
 		</field>
-		
-		
-		
 		
 	</fields>
 	

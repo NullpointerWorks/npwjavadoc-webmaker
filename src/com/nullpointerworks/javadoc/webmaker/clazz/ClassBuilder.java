@@ -12,6 +12,7 @@ public class ClassBuilder extends ItemInformation
 	
 	private String name = "";
 	private String sPackage = "";
+	private String sModule = "";
 	private List<String> modifiers;
 	private List<String> templates;
 	
@@ -29,6 +30,7 @@ public class ClassBuilder extends ItemInformation
 	
 	public void setName(String n) {name=n;}
 	public void setPackage(String n) {sPackage=n;}
+	public void setModule(String n) {sModule=n;}
 	public void setModifier(String e) {modifiers.add(e);}
 	public void setTemplate(String e) {templates.add(e);}
 	public void setField(Field e) {fields.add(e);}
@@ -41,13 +43,15 @@ public class ClassBuilder extends ItemInformation
 	public List<String> getWebText()
 	{
 		builder.clear();
-		makeHead("Class", name);
+		makeHead(sModule, sPackage, "Class", name);
 		makeDescription();
+		makeFieldsSummary();
 		
 		
 		
-		
-		
+		makeFields();
+		makeConstructors();
+		makeMethods();
 		makeEnd();
 		return builder.getLines();
 	}
@@ -56,7 +60,7 @@ public class ClassBuilder extends ItemInformation
 	//
 	// ============================================================
 	
-	private void makeHead(String type, String name)
+	private void makeHead(String sModule, String sPackage, String type, String name)
 	{
 		builder.addLine("<!DOCTYPE html>");
 		builder.addLine("<html>");
@@ -69,6 +73,23 @@ public class ClassBuilder extends ItemInformation
 		builder.addLine("    </head>");
 		builder.addLine("    <body>");
 		builder.addLine("        <div class=\"container\">");
+		
+		if (sModule!=null)
+		if (sModule.length()>0) 
+		{
+			builder.addLine("            <div class=\"header small vdark petrol-font\">");
+			builder.addLine("                Module <a href=\"\">"+sModule+"</a>");
+			builder.addLine("            </div>");
+		}
+		
+		if (sPackage!=null)
+		if (sPackage.length()>0) 
+		{
+			builder.addLine("            <div class=\"header small vdark petrol-font\">");
+			builder.addLine("                Package <a href=\"\">"+sPackage+"</a>");
+			builder.addLine("            </div>");
+		}
+		
 		builder.addLine("            <div class=\"header vdark petrol-font\">");
 		builder.addLine("                "+type+" "+name);
 		builder.addLine("            </div>");
@@ -105,9 +126,54 @@ public class ClassBuilder extends ItemInformation
 		builder.addLine("            <br></div>");
 	}
 	
+	private void makeFieldsSummary()
+	{
+		if (fields.size() < 1) return;
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Field Summary</div>");
+		builder.addLine("                <div class=\"header small yellow\">Summary</div>");
+		builder.addLine("                <div class=\"rTable\">");
+		
+		for (Field f : fields)
+		{
+			builder.addLine("");
+			builder.addLine("");
+			builder.addLine("");
+			builder.addLine("");
+			
+			
+			
+			
+			
+		}
+		
+		builder.addLine("                </div>");
+		builder.addLine("            </div>");
+	}
 	
+	private void makeFields()
+	{
+		
+		
+		
+		
+	}
 	
+	private void makeConstructors()
+	{
+		
+		
+		
+		
+	}
 	
+	private void makeMethods()
+	{
+		
+		
+		
+		
+	}
 	
 	private void makeEnd()
 	{
