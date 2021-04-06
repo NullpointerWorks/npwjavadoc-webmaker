@@ -20,13 +20,14 @@
 		<field>
 			<type>int</type>
 			<visibility>PUBLIC</visibility>
-			<modifier></modifier>
+			<modifier>static</modifier>
+			<modifier>final</modifier>
 			<name>myInteger</name>
 			<value>0</value>
 			
 			<author></author>
-			<version>1.0.0</version>
-			<since></since>
+			<version></version>
+			<since>1.0.0</since>
 			<see></see>
 			<comment>Testing commentary.</comment>
 		</field>
@@ -35,7 +36,14 @@
 	
 	<constructors>
 		<constructor>
+			<visibility>PUBLIC</visibility>
+			<name>myInteger</name>
 			
+			<author></author>
+			<version></version>
+			<since>1.0.0</since>
+			<see></see>
+			<comment>Testing commentary.</comment>
 		</constructor>
 	</constructors>
 	

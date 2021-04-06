@@ -34,8 +34,8 @@ public class ModuleBuilder extends ItemInformation
 		builder.clear();
 		makeHead("Module", name );
 		makeDescription();
-		makeExported();
 		makeModuleList();
+		makeExported();
 		makeEnd();
 		return builder.getLines();
 	}
@@ -93,6 +93,30 @@ public class ModuleBuilder extends ItemInformation
 		builder.addLine("            <br></div>");
 	}
 	
+	private void makeModuleList()
+	{
+		if (required.size()>0)
+		{
+			builder.addLine("            <div class=\"section dark\">\r\n");
+			builder.addLine("                <div class=\"sectiontitle\">Modules</div>\r\n");
+			builder.addLine("                <div class=\"header small yellow\">Requires</div>\r\n");
+			
+			builder.addLine("                <div class=\"rTable\">");
+			builder.addLine("                    <div class=\"rTableRow\">");
+			builder.addLine("                        <div class=\"rTableHead\" style=\"width:20%;\"><strong>Modifier</strong></div>");
+			builder.addLine("                        <div class=\"rTableHead\"><strong>Module</strong></div>");
+			builder.addLine("                    </div>");
+			
+			for (Required r : required)
+			{
+				builder.addLines( r.getWebText() , 5);
+			}
+
+			builder.addLine("                <br></div>");
+			builder.addLine("            </div>");
+		}
+	}
+	
 	private void makeExported()
 	{
 		if (exports.size()>0)
@@ -109,30 +133,6 @@ public class ModuleBuilder extends ItemInformation
 			for (Exported e : exports)
 			{
 				builder.addLines( e.getWebText() , 5);
-			}
-
-			builder.addLine("                <br></div>");
-			builder.addLine("            </div>");
-		}
-	}
-	
-	private void makeModuleList()
-	{
-		if (required.size()>0)
-		{
-			builder.addLine("            <div class=\"section dark\">\r\n");
-			builder.addLine("                <div class=\"sectiontitle\">Packages</div>\r\n");
-			builder.addLine("                <div class=\"header small yellow\">Requires</div>\r\n");
-			
-			builder.addLine("                <div class=\"rTable\">");
-			builder.addLine("                    <div class=\"rTableRow\">");
-			builder.addLine("                        <div class=\"rTableHead\" style=\"width:20%;\"><strong>Modifier</strong></div>");
-			builder.addLine("                        <div class=\"rTableHead\"><strong>Module</strong></div>");
-			builder.addLine("                    </div>");
-			
-			for (Required r : required)
-			{
-				builder.addLines( r.getWebText() , 5);
 			}
 
 			builder.addLine("                <br></div>");

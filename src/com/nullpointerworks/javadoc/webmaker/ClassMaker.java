@@ -31,7 +31,7 @@ public class ClassMaker
 			Element packagename = info.getChild("package");
 			List<Element> templates = info.getChildren("template");
 			List<Element> modifiers = info.getChildren("modifier");
-
+			
 			if (name!=null) builder.setName(name.getText());
 			if (modulename!=null) builder.setModule(modulename.getText());
 			if (packagename!=null) builder.setPackage(packagename.getText());
@@ -48,27 +48,57 @@ public class ClassMaker
 			for (Element field : children)
 			{
 				Field fieldBuilder = new Field();
-				
+
 				Element name = field.getChild("name");
+				Element type = field.getChild("type");
 				Element value = field.getChild("value");
 				Element visibility = field.getChild("visibility");
 				List<Element> modifiers = field.getChildren("modifier");
 				
 				if (name!=null) fieldBuilder.setName(name.getText());
-				if (value!=null) fieldBuilder.setName(value.getText());
+				if (type!=null) fieldBuilder.setType(type.getText());
+				if (value!=null) fieldBuilder.setValue(value.getText());
 				if (visibility!=null) fieldBuilder.setVisibility(visibility.getText());
 				for (Element mod : modifiers) fieldBuilder.setModifier(mod.getText());
 				
-				setInformation(info, builder);
+				setInformation(field, fieldBuilder);
+				builder.setField(fieldBuilder);
 			}
 		}
 		
+		Element constructors = root.getChild("constructors");
+		if (constructors!=null)
+		{
+			List<Element> children = constructors.getChildren();
+			for (Element constructor : children)
+			{
+				
+				
+				
+				
+				
+			}
+		}
+		
+		Element methods = root.getChild("methods");
+		if (methods!=null)
+		{
+			List<Element> children = methods.getChildren();
+			for (Element method : children)
+			{
+				
+				
+				
+				
+				
+			}
+		}
 		
 		List<String> page = builder.getWebText();
 		FileIO.save(path, page);
 	}
 
-	private void setInformation(Element info, ClassBuilder builder) 
+	private void setInformation(Element info, ItemInformation builder) 
 	{
 		Element author = info.getChild("author");
 		Element version = info.getChild("version");
