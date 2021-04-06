@@ -9,6 +9,8 @@ import com.nullpointerworks.javadoc.webmaker.LineBuilder;
 public class ModuleBuilder extends ItemInformation
 {
 	private LineBuilder builder;
+	
+	private String name = "";
 	private List<Exported> exports;
 	private List<Required> required;
 	
@@ -19,6 +21,7 @@ public class ModuleBuilder extends ItemInformation
 		required = new ArrayList<Required>();
 	}
 	
+	public void setName(String n) {name=n;}
 	public void setExport(Exported e) {exports.add(e);}
 	public void setRequired(Required r) {required.add(r);}
 	
@@ -29,7 +32,7 @@ public class ModuleBuilder extends ItemInformation
 	public List<String> getWebText()
 	{
 		builder.clear();
-		makeHead("Module", getName() );
+		makeHead("Module", name );
 		makeDescription();
 		makeExported();
 		makeModuleList();

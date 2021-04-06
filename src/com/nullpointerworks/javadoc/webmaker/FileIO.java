@@ -28,7 +28,7 @@ public class FileIO
 		return doc;
 	}
 	
-	public static void save(String path, List<String> page)
+	public static boolean save(String path, List<String> page)
 	{
 		TextFile tf = new TextFile();
 		tf.setEncoding("UTF-8");
@@ -44,6 +44,8 @@ public class FileIO
 		catch (IOException e) 
 		{
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 }

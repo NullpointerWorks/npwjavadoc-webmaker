@@ -19,9 +19,9 @@ public class ModuleMaker
 		return type.getText().equalsIgnoreCase("module");
 	}
 	
-	public void makeModule(Document doc)
+	public void makeModule(Document doc, String path)
 	{
-		ModuleBuilder mmaker = new ModuleBuilder();
+		ModuleBuilder maker = new ModuleBuilder();
 		Element root = doc.getRootElement();
 		
 		Element info = root.getChild("info");
@@ -34,12 +34,12 @@ public class ModuleMaker
 			Element see = info.getChild("see");
 			Element comment = info.getChild("comment");
 			
-			if (name!=null) mmaker.setName(name.getText());
-			if (author!=null) mmaker.setAuthor(author.getText());
-			if (version!=null) mmaker.setVersion(version.getText());
-			if (since!=null) mmaker.setSince(since.getText());
-			if (see!=null) mmaker.setSeeAlso(see.getText());
-			if (comment!=null) mmaker.setDescription(comment.getText());
+			if (name!=null) maker.setName(name.getText());
+			if (author!=null) maker.setAuthor(author.getText());
+			if (version!=null) maker.setVersion(version.getText());
+			if (since!=null) maker.setSince(since.getText());
+			if (see!=null) maker.setSeeAlso(see.getText());
+			if (comment!=null) maker.setDescription(comment.getText());
 		}
 		
 		Element exports = root.getChild("exports");
@@ -48,7 +48,7 @@ public class ModuleMaker
 			List<Element> exps = exports.getChildren();
 			for (Element e : exps)
 			{
-				mmaker.setExport( new Exported("",e.getText()) );
+				maker.setExport( new Exported("",e.getText()) );
 			}
 		}
 		
@@ -58,11 +58,11 @@ public class ModuleMaker
 			List<Element> reqs = requires.getChildren();
 			for (Element r : reqs)
 			{
-				mmaker.setRequired( new Required(r.getText(),"") );
+				maker.setRequired( new Required(r.getText(),"") );
 			}
 		}
 		
-		List<String> page = mmaker.getWebText();
-		FileIO.save("web/module.html", page);
+		List<String> page = maker.getWebText();
+		FileIO.save(path, page);
 	}
 }

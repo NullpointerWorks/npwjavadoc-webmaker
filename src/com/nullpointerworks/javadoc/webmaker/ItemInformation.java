@@ -2,21 +2,18 @@ package com.nullpointerworks.javadoc.webmaker;
 
 public class ItemInformation 
 {
-	private String name = "";
 	private String desc = "";
 	private String vers = "";
 	private String auth = "";
 	private String since = "";
 	private String see = "";
 	
-	public String getName() {return name;}
 	public String getVersion() {return vers;}
 	public String getAuthor() {return auth;}
 	public String getSince() {return since;}
 	public String getSeeAlso() {return see;}
 	public String getDescription() {return desc;}
-
-	public void setName(String n) {name=n;}
+	
 	public void setVersion(String v) {vers=v;}
 	public void setAuthor(String a) {auth=a;}
 	public void setSince(String s) {since=s;}

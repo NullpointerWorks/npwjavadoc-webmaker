@@ -9,16 +9,28 @@ import com.nullpointerworks.javadoc.webmaker.LineBuilder;
 public class ClassBuilder extends ItemInformation
 {
 	private LineBuilder builder;
+	
+	private String name = "";
+	private String sPackage = "";
+	private List<String> modifiers;
+	private List<String> templates;
+	
 	private List<Field> fields;
 	private List<Method> methods;
 	
 	public ClassBuilder()
 	{
 		builder = new LineBuilder();
+		modifiers = new ArrayList<String>();
+		templates = new ArrayList<String>();
 		fields = new ArrayList<Field>();
 		methods = new ArrayList<Method>();
 	}
-
+	
+	public void setName(String n) {name=n;}
+	public void setPackage(String n) {sPackage=n;}
+	public void setModifier(String e) {modifiers.add(e);}
+	public void setTemplate(String e) {templates.add(e);}
 	public void setField(Field e) {fields.add(e);}
 	public void setMethod(Method e) {methods.add(e);}
 	
@@ -29,7 +41,7 @@ public class ClassBuilder extends ItemInformation
 	public List<String> getWebText()
 	{
 		builder.clear();
-		makeHead("Class", getName() );
+		makeHead("Class", name);
 		makeDescription();
 		
 		

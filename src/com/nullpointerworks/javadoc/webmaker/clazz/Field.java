@@ -1,6 +1,12 @@
 package com.nullpointerworks.javadoc.webmaker.clazz;
 
-public class Field 
+import com.nullpointerworks.javadoc.webmaker.ItemInformation;
+
+public class Field extends ItemInformation
 {
+	
+	
+	
+	
 	
 }

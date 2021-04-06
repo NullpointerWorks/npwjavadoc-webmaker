@@ -15,20 +15,20 @@ public class MainWebMaker
 	
 	public MainWebMaker()
 	{
-		Document doc = FileIO.load("xml/module.xml");
+		Document doc = FileIO.load("xml/class.xml");
 		if (doc==null) return;
 		
 		ModuleMaker mmaker = new ModuleMaker();
 		if (mmaker.isModule(doc))
 		{
-			mmaker.makeModule(doc);
+			mmaker.makeModule(doc, "web/module.html");
 			return;
 		}
 		
 		ClassMaker cmaker = new ClassMaker();
 		if (cmaker.isClass(doc))
 		{
-			cmaker.makeClass(doc);
+			cmaker.makeClass(doc, "web/class.html");
 			return;
 		}
 		

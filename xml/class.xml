@@ -3,9 +3,13 @@
 	<info>
 		<type>CLASS</type>
 		<package>my.package</package>
-		<name>AbstractBuffer</name>
 		<modifier>ABSTRACT</modifier>
 		<template>A</template>
+		<name>AbstractBuffer</name>
+		<author>Michiel Drost - Nullpointer Works</author>
+		<version>1.0.0</version>
+		<since></since>
+		<see></see>
 		<comment>Testing commentary.</comment>
 	</info>
 	
@@ -15,12 +19,15 @@
 			<visibility>PUBLIC</visibility>
 			<modifier></modifier>
 			<name>myInteger</name>
-			<author>Michiel Drost - Nullpointer Works</author>
+			<author></author>
 			<version>1.0.0</version>
 			<since></since>
 			<see></see>
 			<comment>Testing commentary.</comment>
 		</field>
+		
+		
+		
 		
 	</fields>
 	
@@ -34,7 +41,6 @@
 		<method>
 			
 		</method>
-		
 	</methods>
 	
 </source>
