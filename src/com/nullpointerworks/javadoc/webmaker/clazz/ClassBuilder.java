@@ -17,6 +17,7 @@ public class ClassBuilder extends ItemInformation
 	private List<String> templates;
 	
 	private List<Field> fields;
+	private List<Constructor> constructors;
 	private List<Method> methods;
 	
 	public ClassBuilder()
@@ -25,6 +26,7 @@ public class ClassBuilder extends ItemInformation
 		modifiers = new ArrayList<String>();
 		templates = new ArrayList<String>();
 		fields = new ArrayList<Field>();
+		constructors = new ArrayList<Constructor>();
 		methods = new ArrayList<Method>();
 	}
 	
@@ -33,7 +35,9 @@ public class ClassBuilder extends ItemInformation
 	public void setModule(String n) {sModule=n;}
 	public void setModifier(String e) {modifiers.add(e);}
 	public void setTemplate(String e) {templates.add(e);}
+	
 	public void setField(Field e) {fields.add(e);}
+	public void setConstructor(Constructor e) {constructors.add(e);}
 	public void setMethod(Method e) {methods.add(e);}
 	
 	// ============================================================
@@ -179,10 +183,18 @@ public class ClassBuilder extends ItemInformation
 	private void makeConstructorsSummary()
 	{
 		
+		
+		
+		
+		
 	}
 	
 	private void makeConstructors()
 	{
+		
+		
+		
+		
 		
 	}
 	
