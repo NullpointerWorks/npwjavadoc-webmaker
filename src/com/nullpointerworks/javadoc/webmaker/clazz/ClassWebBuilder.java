@@ -6,7 +6,7 @@ import java.util.List;
 import com.nullpointerworks.javadoc.webmaker.ItemInformation;
 import com.nullpointerworks.javadoc.webmaker.LineBuilder;
 
-public class ClassBuilder extends ItemInformation
+public class ClassWebBuilder extends ItemInformation
 {
 	private LineBuilder builder;
 	
@@ -20,7 +20,7 @@ public class ClassBuilder extends ItemInformation
 	private List<Constructor> constructors;
 	private List<Method> methods;
 	
-	public ClassBuilder()
+	public ClassWebBuilder()
 	{
 		builder = new LineBuilder();
 		modifiers = new ArrayList<String>();

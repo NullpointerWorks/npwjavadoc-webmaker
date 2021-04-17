@@ -6,7 +6,7 @@ import java.util.List;
 import com.nullpointerworks.javadoc.webmaker.ItemInformation;
 import com.nullpointerworks.javadoc.webmaker.LineBuilder;
 
-public class ModuleBuilder extends ItemInformation
+public class ModuleWebBuilder extends ItemInformation
 {
 	private LineBuilder builder;
 	
@@ -14,7 +14,7 @@ public class ModuleBuilder extends ItemInformation
 	private List<Exported> exports;
 	private List<Required> required;
 	
-	public ModuleBuilder()
+	public ModuleWebBuilder()
 	{
 		builder = new LineBuilder();
 		exports = new ArrayList<Exported>();

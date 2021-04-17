@@ -2,13 +2,12 @@ package com.nullpointerworks.javadoc.webmaker;
 
 import java.util.List;
 
-import com.nullpointerworks.javadoc.webmaker.clazz.ClassBuilder;
-import com.nullpointerworks.javadoc.webmaker.clazz.Field;
+import com.nullpointerworks.javadoc.webmaker.clazz.*;
 
 import exp.nullpointerworks.xml.Document;
 import exp.nullpointerworks.xml.Element;
 
-public class ClassMaker 
+public class ClassReader 
 {
 	public boolean isClass(Document doc) 
 	{
@@ -20,7 +19,7 @@ public class ClassMaker
 	
 	public void makeClass(Document doc, String path) 
 	{
-		ClassBuilder builder = new ClassBuilder();
+		ClassWebBuilder builder = new ClassWebBuilder();
 		Element root = doc.getRootElement();
 		
 		Element info = root.getChild("info");

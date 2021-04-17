@@ -2,14 +2,12 @@ package com.nullpointerworks.javadoc.webmaker;
 
 import java.util.List;
 
-import com.nullpointerworks.javadoc.webmaker.module.Exported;
-import com.nullpointerworks.javadoc.webmaker.module.ModuleBuilder;
-import com.nullpointerworks.javadoc.webmaker.module.Required;
+import com.nullpointerworks.javadoc.webmaker.module.*;
 
 import exp.nullpointerworks.xml.Document;
 import exp.nullpointerworks.xml.Element;
 
-public class ModuleMaker 
+public class ModuleReader 
 {
 	public boolean isModule(Document doc)
 	{
@@ -21,7 +19,7 @@ public class ModuleMaker
 	
 	public void makeModule(Document doc, String path)
 	{
-		ModuleBuilder maker = new ModuleBuilder();
+		ModuleWebBuilder maker = new ModuleWebBuilder();
 		Element root = doc.getRootElement();
 		
 		Element info = root.getChild("info");
