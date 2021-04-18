@@ -95,6 +95,10 @@ public class ClassReader
 				
 				
 				
+				
+				
+				
+				
 			}
 		}
 		
@@ -116,7 +120,7 @@ public class ClassReader
 		if (see!=null) builder.setSeeAlso(see.getText());
 		if (comment!=null) builder.setDescription(comment.getText());
 	}
-
+	
 	private void setParameters(Element constructor, Constructor builder) 
 	{
 		List<Element> list = constructor.getChildren("param");
@@ -125,16 +129,18 @@ public class ClassReader
 			Element modifier = param.getChild("modifier");
 			Element type = param.getChild("type");
 			Element name = param.getChild("name");
+			Element comment = param.getChild("comment");
 			List<Element> templates = param.getChildren("template");
 			
 			Parameter p = new Parameter();
 			if (name!=null) p.setName( name.getText() );
 			if (type!=null) p.setType( type.getText() );
 			if (modifier!=null) p.setModifier( modifier.getText() );
+			if (comment!=null) p.setComment( comment.getText() );
 			
 			for (Element temp : templates)
 			{
-				p.setName( temp.getText() );
+				p.setTemplate( temp.getText() );
 			}
 			
 			builder.setParameter(p);

@@ -47,9 +47,46 @@ public class Constructor extends ItemInformation
 	
 	private void makeConstructor() 
 	{
-		builder.addLine("<div class=\"header small blue\">"+name+"</div>");
+		builder.addLine("<div class=\"header small blue\">"+visibility+" "+getComplexName()+"</div>");
 		builder.addLine("<div class=\"content midlight\">");
 		
+		if (getDescription()!=null)
+		if (getDescription().length()>0)
+		{
+			builder.addLine("    <div class=\"desc\">");
+			builder.addLine("        "+getDescription());
+			builder.addLine("    </div>");
+		}
+		
+		if (params!=null)
+		if (params.size()>0)
+		{
+			builder.addLine("    <div class=\"desc mark\">Parameters:");
+			
+			for (int i=0,l=params.size(); i<l; i++)
+			{
+				Parameter p = params.get(i);
+				builder.addLine("        <div class=\"marktext\">"+p.getName()+" - "+p.getComment()+"</div>");
+			}
+			
+			builder.addLine("    </div>");
+		}
+		
+		if (getVersion()!=null)
+		if (getVersion().length()>0)
+			builder.addLine("    <div class=\"desc mark\">Version:<div class=\"marktext\">"+getVersion()+"</div></div>");
+		
+		if (getAuthor()!=null)
+		if (getAuthor().length()>0)
+			builder.addLine("    <div class=\"desc mark\">Author:<div class=\"marktext\">"+getAuthor()+"</div></div>");
+		
+		if (getSince()!=null)
+		if (getSince().length()>0)
+			builder.addLine("    <div class=\"desc mark\">Since:<div class=\"marktext\">"+getSince()+"</div></div>");
+		
+		if (getSeeAlso()!=null)
+		if (getSeeAlso().length()>0)
+			builder.addLine("    <div class=\"desc mark\">See Also:<div class=\"marktext\">"+getSeeAlso()+"</div></div>");
 		
 		builder.addLine("</div>");
 	}
@@ -78,13 +115,16 @@ public class Constructor extends ItemInformation
 		for (int i=0,l=params.size(); i<l; i++)
 		{
 			Parameter p = params.get(i);
+			String t = p.getTemplate();
+			String temp = ((t.length()>0)? "&lt;"+t+"&gt;": "");
+			
 			if (l==1 || i==(l-1))
 			{
-				name+=p.getType() + " " + p.getName();
+				name+=(p.getType() + temp + " " + p.getName());
 			}
 			else
 			{
-				name+=p.getType() + " " + p.getName() + ", ";
+				name+=(p.getType() + temp + " " + p.getName() + ", ");
 			}
 		}
 		return name+")";

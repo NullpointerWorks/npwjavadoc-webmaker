@@ -220,10 +220,19 @@ public class ClassWebBuilder extends ItemInformation
 	private void makeMethodsSummary()
 	{
 		
+		
+		
+		
 	}
 	
 	private void makeMethods()
 	{
+		
+		
+		
+		
+		
+		
 		
 	}
 	

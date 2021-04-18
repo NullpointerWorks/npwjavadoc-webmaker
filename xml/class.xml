@@ -74,6 +74,18 @@
 	
 	<constructors>
 		<constructor>
+			<visibility>PRIVATE</visibility>
+			<name>AbstractBuffer</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Constructor commentary.</comment>
+			</info>
+		</constructor>
+		
+		<constructor>
 			<visibility>PUBLIC</visibility>
 			<name>AbstractBuffer</name>
 			<info>
@@ -87,25 +99,15 @@
 				<modifier>final</modifier>
 				<type>int</type>
 				<name>i</name>
+				<comment>some integer</comment>
 			</param>
 			<param>
 				<modifier>final</modifier>
 				<type>Class</type>
-				<name>i</name>
+				<name>c</name>
 				<template>? extends B</template>
+				<comment>testing class argument</comment>
 			</param>
-		</constructor>
-		
-		<constructor>
-			<visibility>PUBLIC</visibility>
-			<name>AbstractBuffer</name>
-			<info>
-				<author></author>
-				<version></version>
-				<since>1.0.0</since>
-				<see></see>
-				<comment>Constructor commentary.</comment>
-			</info>
 		</constructor>
 		
 	</constructors>
