@@ -35,6 +35,41 @@
 				<comment>Testing commentary.</comment>
 			</info>
 		</field>
+		
+		<field>
+			<type>int</type>
+			<visibility>PUBLIC</visibility>
+			<modifier>static</modifier>
+			<modifier>final</modifier>
+			<name>myInteger2</name>
+			<value>0</value>
+			
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</field>
+		
+		<field>
+			<type>int</type>
+			<visibility>PUBLIC</visibility>
+			<modifier>static</modifier>
+			<modifier>final</modifier>
+			<name>myInteger3</name>
+			<value>0</value>
+			
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</field>
+		
 	</fields>
 	
 	<constructors>
@@ -59,8 +94,20 @@
 				<name>i</name>
 				<template>? extends B</template>
 			</param>
-			
 		</constructor>
+		
+		<constructor>
+			<visibility>PUBLIC</visibility>
+			<name>AbstractBuffer</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Constructor commentary.</comment>
+			</info>
+		</constructor>
+		
 	</constructors>
 	
 	<methods>
