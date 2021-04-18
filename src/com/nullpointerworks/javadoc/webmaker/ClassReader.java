@@ -71,11 +71,17 @@ public class ClassReader
 			List<Element> children = constructors.getChildren();
 			for (Element constructor : children)
 			{
+				Constructor constructorBuilder = new Constructor();
 				
+				Element visibility 		= constructor.getChild("visibility");
+				Element name 			= constructor.getChild("name");
 				
+				if (visibility!=null) 	constructorBuilder.setVisibility(visibility.getText());
+				if (name!=null) 		constructorBuilder.setName(name.getText());
 				
-				
-				
+				setParameters(constructor, constructorBuilder);
+				setInformation(constructor, constructorBuilder);
+				builder.setConstructor(constructorBuilder);
 			}
 		}
 		
@@ -89,7 +95,6 @@ public class ClassReader
 				
 				
 				
-				
 			}
 		}
 		
@@ -99,15 +104,40 @@ public class ClassReader
 
 	private void setInformation(Element info, ItemInformation builder) 
 	{
-		Element author = info.getChild("author");
-		Element version = info.getChild("version");
-		Element since = info.getChild("since");
-		Element see = info.getChild("see");
-		Element comment = info.getChild("comment");
+		Element i = info.getChild("info");
+		Element author	= i.getChild("author");
+		Element version	= i.getChild("version");
+		Element since 	= i.getChild("since");
+		Element see 	= i.getChild("see");
+		Element comment	= i.getChild("comment");
 		if (author!=null) builder.setAuthor(author.getText());
 		if (version!=null) builder.setVersion(version.getText());
 		if (since!=null) builder.setSince(since.getText());
 		if (see!=null) builder.setSeeAlso(see.getText());
 		if (comment!=null) builder.setDescription(comment.getText());
+	}
+
+	private void setParameters(Element constructor, Constructor builder) 
+	{
+		List<Element> list = constructor.getChildren("param");
+		for (Element param : list)
+		{
+			Element modifier = param.getChild("modifier");
+			Element type = param.getChild("type");
+			Element name = param.getChild("name");
+			List<Element> templates = param.getChildren("template");
+			
+			Parameter p = new Parameter();
+			if (name!=null) p.setName( name.getText() );
+			if (type!=null) p.setType( type.getText() );
+			if (modifier!=null) p.setModifier( modifier.getText() );
+			
+			for (Element temp : templates)
+			{
+				p.setName( temp.getText() );
+			}
+			
+			builder.setParameter(p);
+		}
 	}
 }

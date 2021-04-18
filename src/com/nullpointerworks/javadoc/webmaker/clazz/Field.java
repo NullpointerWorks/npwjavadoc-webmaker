@@ -20,7 +20,7 @@ public class Field extends ItemInformation
 		builder = new LineBuilder();
 		modifiers = new ArrayList<String>();
 	}
-
+	
 	public void setName(String n) {name=n;}
 	public void setType(String n) {type=n;}
 	public void setValue(String n) {value=n;}

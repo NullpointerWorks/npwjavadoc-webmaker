@@ -9,11 +9,13 @@
 		<template>B</template>
 		<name>AbstractBuffer</name>
 		
-		<author>Michiel Drost - Nullpointer Works</author>
-		<version>1.0.0</version>
-		<since></since>
-		<see></see>
-		<comment>Testing commentary.</comment>
+		<info>
+			<author>Michiel Drost - Nullpointer Works</author>
+			<version>1.0.0</version>
+			<since></since>
+			<see></see>
+			<comment>Testing commentary.</comment>
+		</info>
 	</info>
 	
 	<fields>
@@ -25,25 +27,39 @@
 			<name>myInteger</name>
 			<value>0</value>
 			
-			<author></author>
-			<version></version>
-			<since>1.0.0</since>
-			<see></see>
-			<comment>Testing commentary.</comment>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
 		</field>
-		
 	</fields>
 	
 	<constructors>
 		<constructor>
 			<visibility>PUBLIC</visibility>
-			<name>myInteger</name>
+			<name>AbstractBuffer</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Constructor commentary.</comment>
+			</info>
+			<param>
+				<modifier>final</modifier>
+				<type>int</type>
+				<name>i</name>
+			</param>
+			<param>
+				<modifier>final</modifier>
+				<type>Class</type>
+				<name>i</name>
+				<template>? extends B</template>
+			</param>
 			
-			<author></author>
-			<version></version>
-			<since>1.0.0</since>
-			<see></see>
-			<comment>Testing commentary.</comment>
 		</constructor>
 	</constructors>
 	
