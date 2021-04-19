@@ -1,6 +1,7 @@
 package com.nullpointerworks.javadoc.test;
 
 import com.nullpointerworks.javadoc.webmaker.ClassReader;
+import com.nullpointerworks.javadoc.webmaker.EnumReader;
 import com.nullpointerworks.javadoc.webmaker.FileIO;
 import com.nullpointerworks.javadoc.webmaker.ModuleReader;
 
@@ -15,8 +16,9 @@ public class MainWebMaker
 	
 	public MainWebMaker()
 	{
-		Document doc = FileIO.load("xml/class.xml");
+		Document doc = FileIO.load("xml/enum1.xml");
 		if (doc==null) return;
+		
 		
 		ModuleReader mmaker = new ModuleReader();
 		if (mmaker.isModule(doc))
@@ -32,6 +34,12 @@ public class MainWebMaker
 			return;
 		}
 		
+		EnumReader emaker = new EnumReader();
+		if (emaker.isEnum(doc))
+		{
+			
+			return;
+		}
 		
 		
 		

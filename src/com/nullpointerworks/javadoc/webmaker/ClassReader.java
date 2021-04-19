@@ -91,14 +91,19 @@ public class ClassReader
 			List<Element> children = methods.getChildren();
 			for (Element method : children)
 			{
+				Method methodBuilder = new Method();
 				
+				Element visibility 		= method.getChild("visibility");
+				Element type 			= method.getChild("type");
+				Element name 			= method.getChild("name");
 				
+				if (visibility!=null) 	methodBuilder.setVisibility(visibility.getText());
+				if (type!=null) 		methodBuilder.setType(type.getText());
+				if (name!=null) 		methodBuilder.setName(name.getText());
 				
-				
-				
-				
-				
-				
+				setParameters(method, methodBuilder);
+				setInformation(method, methodBuilder);
+				builder.setMethod(methodBuilder);
 			}
 		}
 		
@@ -121,7 +126,7 @@ public class ClassReader
 		if (comment!=null) builder.setDescription(comment.getText());
 	}
 	
-	private void setParameters(Element constructor, Constructor builder) 
+	private void setParameters(Element constructor, Method builder) 
 	{
 		List<Element> list = constructor.getChildren("param");
 		for (Element param : list)

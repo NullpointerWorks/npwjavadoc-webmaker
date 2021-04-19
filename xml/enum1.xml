@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<source>
+	<info>
+		<type>ENUM</type>
+		<module>libnpw.test</module>
+		<package>my.package</package>
+		<name>DayOfTheWeek</name>
+		
+		<info>
+			<author>Michiel Drost - Nullpointer Works</author>
+			<version>1.0.0</version>
+			<since></since>
+			<see></see>
+			<comment>Testing commentary.</comment>
+		</info>
+	</info>
+	
+	<fields>
+		<field>
+			<name>MONDAY</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</field>
+		
+		
+		
+		
+		
+		
+		
+	</fields>
+	
+	<constructors>
+	</constructors>
+	
+	<methods>
+	</methods>
+	
+</source>

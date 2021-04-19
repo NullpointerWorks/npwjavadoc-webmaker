@@ -115,6 +115,24 @@
 	<methods>
 		<method>
 			
+			<visibility>PRIVATE</visibility>
+			<type>AbstractBuffer</type>
+			<name>getMethodData</name>
+			
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Some method commentary.</comment>
+			</info>
+			
+			<param>
+				<type>int</type>
+				<name>id</name>
+				<comment>some integer</comment>
+			</param>
+			
 		</method>
 	</methods>
 	

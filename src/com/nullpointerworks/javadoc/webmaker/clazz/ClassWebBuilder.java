@@ -219,21 +219,40 @@ public class ClassWebBuilder extends ItemInformation
 	
 	private void makeMethodsSummary()
 	{
+		if (methods.size() < 1) return;
 		
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Method Summary</div>");
+		builder.addLine("                <div class=\"header small yellow\">Summary</div>");
+		builder.addLine("                <div class=\"rTable\">");
+		builder.addLine("                    <div class=\"rTableRow\">");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Modifier</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Type</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:50%;\"><strong>Method</strong></div>");
+		builder.addLine("                    </div>");
 		
+		for (Method m : methods)
+		{
+			builder.addLines( m.getWebTextSummary() , 5);
+		}
 		
-		
+		builder.addLine("                <br></div>");
+		builder.addLine("            </div>");
 	}
 	
 	private void makeMethods()
 	{
+		if (methods.size() < 1) return;
 		
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Method Detail</div>");
 		
+		for (Method m : methods)
+		{
+			builder.addLines( m.getWebText() , 4);
+		}
 		
-		
-		
-		
-		
+		builder.addLine("            <br></div>");
 	}
 	
 	private void makeEnd()
