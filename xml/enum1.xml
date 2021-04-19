@@ -15,8 +15,8 @@
 		</info>
 	</info>
 	
-	<fields>
-		<field>
+	<enums>
+		<enum>
 			<name>MONDAY</name>
 			<info>
 				<author></author>
@@ -25,7 +25,7 @@
 				<see></see>
 				<comment>Testing commentary.</comment>
 			</info>
-		</field>
+		</enum>
 		
 		
 		
@@ -33,6 +33,10 @@
 		
 		
 		
+	</enums>
+	
+	
+	<fields>
 	</fields>
 	
 	<constructors>
