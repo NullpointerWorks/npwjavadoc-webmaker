@@ -37,7 +37,7 @@ public class MainWebMaker
 		EnumReader emaker = new EnumReader();
 		if (emaker.isEnum(doc))
 		{
-			
+			emaker.makeEnum(doc, "web/enum1.html");
 			return;
 		}
 		
