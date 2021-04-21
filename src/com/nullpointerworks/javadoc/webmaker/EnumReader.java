@@ -17,6 +17,8 @@ public class EnumReader
 	{
 		
 		
+		Element root = doc.getRootElement();
+		
 		
 	}
 	
