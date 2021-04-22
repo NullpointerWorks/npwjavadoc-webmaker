@@ -2,9 +2,9 @@
 <source>
 	<info>
 		<type>ENUM</type>
-		<module>libnpw.test</module>
-		<package>my.package</package>
 		<name>DayOfTheWeek</name>
+		<package>my.package</package>
+		<module>libnpw.test</module>
 		
 		<info>
 			<author>Michiel Drost - Nullpointer Works</author>
