@@ -4,10 +4,10 @@
 		<type>CLASS</type>
 		<module>libnpw.test</module>
 		<package>my.package</package>
+		<name>AbstractBuffer</name>
 		<modifier>ABSTRACT</modifier>
 		<template>A</template>
 		<template>B</template>
-		<name>AbstractBuffer</name>
 		
 		<info>
 			<author>Michiel Drost - Nullpointer Works</author>
