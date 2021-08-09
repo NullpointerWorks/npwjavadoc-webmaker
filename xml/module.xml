@@ -2,7 +2,7 @@
 <source>
 	<info>
 		<type>MODULE</type>
-		<name>libnpw.test</name>
+		<name>npw.webmaker</name>
 		<author>Michiel Drost - Nullpointer Works</author>
 		<version>1.0.0</version>
 		<since>1.0.0</since>
@@ -15,7 +15,8 @@
 	</exports>
 	
 	<requires>
-		<require>libnpw.test</require>
+		<require>libnpw.util</require>
+		<require>libnpw.xml</require>
 	</requires>
 	
 </source>

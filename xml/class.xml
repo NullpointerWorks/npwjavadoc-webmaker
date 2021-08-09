@@ -115,7 +115,7 @@
 	<methods>
 		<method>
 			
-			<visibility>PRIVATE</visibility>
+			<visibility>public</visibility>
 			<type>AbstractBuffer</type>
 			<name>getMethodData</name>
 			

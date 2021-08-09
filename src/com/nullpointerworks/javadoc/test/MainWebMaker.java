@@ -16,21 +16,23 @@ public class MainWebMaker
 	
 	public MainWebMaker()
 	{
-		Document doc = FileIO.load("xml/enum1.xml");
+		Document doc = FileIO.load("xml/module.xml");
 		if (doc==null) return;
 		
 		
-		ModuleReader mmaker = new ModuleReader();
-		if (mmaker.isModule(doc))
-		{
-			mmaker.makeModule(doc, "web/module.html");
-			return;
-		}
+		
 		
 		ClassReader cmaker = new ClassReader();
 		if (cmaker.isClass(doc))
 		{
 			cmaker.makeClass(doc, "web/class.html");
+			return;
+		}
+		
+		ModuleReader mmaker = new ModuleReader();
+		if (mmaker.isModule(doc))
+		{
+			mmaker.makeModule(doc, "web/module.html");
 			return;
 		}
 		

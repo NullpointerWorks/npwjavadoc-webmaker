@@ -9,6 +9,13 @@ import exp.nullpointerworks.xml.Element;
 
 public class ClassReader 
 {
+	private boolean ignorePrivate = true;
+	
+	public void setIgnorePrivate(boolean b)
+	{
+		ignorePrivate = b;
+	}
+	
 	public boolean isClass(Document doc) 
 	{
 		Element root = doc.getRootElement();
@@ -54,6 +61,12 @@ public class ClassReader
 				Element visibility = field.getChild("visibility");
 				List<Element> modifiers = field.getChildren("modifier");
 				
+				if (ignorePrivate)
+				if (visibility.getText().equalsIgnoreCase("private"))
+				{
+					continue;
+				}
+				
 				if (name!=null) fieldBuilder.setName(name.getText());
 				if (type!=null) fieldBuilder.setType(type.getText());
 				if (value!=null) fieldBuilder.setValue(value.getText());
@@ -76,6 +89,12 @@ public class ClassReader
 				Element visibility 		= constructor.getChild("visibility");
 				Element name 			= constructor.getChild("name");
 				
+				if (ignorePrivate)
+				if (visibility.getText().equalsIgnoreCase("private"))
+				{
+					continue;
+				}
+				
 				if (visibility!=null) 	constructorBuilder.setVisibility(visibility.getText());
 				if (name!=null) 		constructorBuilder.setName(name.getText());
 				
@@ -96,6 +115,12 @@ public class ClassReader
 				Element visibility 		= method.getChild("visibility");
 				Element type 			= method.getChild("type");
 				Element name 			= method.getChild("name");
+				
+				if (ignorePrivate)
+				if (visibility.getText().equalsIgnoreCase("private"))
+				{
+					continue;
+				}
 				
 				if (visibility!=null) 	methodBuilder.setVisibility(visibility.getText());
 				if (type!=null) 		methodBuilder.setType(type.getText());
