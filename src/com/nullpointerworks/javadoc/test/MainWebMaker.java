@@ -16,18 +16,18 @@ public class MainWebMaker
 	
 	public MainWebMaker()
 	{
+		makeModule();
+		
+		//makeClass();
+		
+		
+		
+	}
+	
+	public void makeModule()
+	{
 		Document doc = FileIO.load("xml/module.xml");
 		if (doc==null) return;
-		
-		
-		
-		
-		ClassReader cmaker = new ClassReader();
-		if (cmaker.isClass(doc))
-		{
-			cmaker.makeClass(doc, "web/class.html");
-			return;
-		}
 		
 		ModuleReader mmaker = new ModuleReader();
 		if (mmaker.isModule(doc))
@@ -35,6 +35,25 @@ public class MainWebMaker
 			mmaker.makeModule(doc, "web/module.html");
 			return;
 		}
+	}
+	
+	public void makeClass()
+	{
+		Document doc = FileIO.load("xml/AbstractTestClass.xml");
+		if (doc==null) return;
+		
+		ClassReader cmaker = new ClassReader();
+		if (cmaker.isClass(doc))
+		{
+			cmaker.makeClass(doc, "web/class-abstracttestclass.html");
+			return;
+		}
+	}
+	
+	public void makeEnum1()
+	{
+		Document doc = FileIO.load("xml/enum1.xml");
+		if (doc==null) return;
 		
 		EnumReader emaker = new EnumReader();
 		if (emaker.isEnum(doc))
@@ -42,9 +61,5 @@ public class MainWebMaker
 			emaker.makeEnum(doc, "web/enum1.html");
 			return;
 		}
-		
-		
-		
 	}
-	
 }
