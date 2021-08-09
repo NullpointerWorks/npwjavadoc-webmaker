@@ -3,7 +3,7 @@
 	<info>
 		<type>CLASS</type>
 		<module>libnpw.test</module>
-		<package>my.package</package>
+		<package>com.nullpointerworks.test</package>
 		<name>AbstractTestClass</name>
 		<modifier>ABSTRACT</modifier>
 		<template>A</template>

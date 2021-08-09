@@ -4,6 +4,7 @@ import com.nullpointerworks.javadoc.webmaker.ClassReader;
 import com.nullpointerworks.javadoc.webmaker.EnumReader;
 import com.nullpointerworks.javadoc.webmaker.FileIO;
 import com.nullpointerworks.javadoc.webmaker.ModuleReader;
+import com.nullpointerworks.javadoc.webmaker.PackageReader;
 
 import exp.nullpointerworks.xml.Document;
 
@@ -17,23 +18,32 @@ public class MainWebMaker
 	public MainWebMaker()
 	{
 		makeModule();
-		
+		makePackage();
 		//makeClass();
-		
-		
 		
 	}
 	
 	public void makeModule()
 	{
-		Document doc = FileIO.load("xml/module.xml");
+		Document doc = FileIO.load("xml/module-npw-webmaker.xml");
 		if (doc==null) return;
 		
 		ModuleReader mmaker = new ModuleReader();
 		if (mmaker.isModule(doc))
 		{
-			mmaker.makeModule(doc, "web/module.html");
-			return;
+			mmaker.makeModule(doc, "web/module-npw-webmaker.html");
+		}
+	}
+	
+	public void makePackage()
+	{
+		Document doc = FileIO.load("xml/pack-com-nullpointerworks-test.xml");
+		if (doc==null) return;
+		
+		PackageReader preader = new PackageReader();
+		if (preader.isPackage(doc))
+		{
+			preader.makePackage(doc,"");
 		}
 	}
 	
@@ -46,7 +56,6 @@ public class MainWebMaker
 		if (cmaker.isClass(doc))
 		{
 			cmaker.makeClass(doc, "web/class-abstracttestclass.html");
-			return;
 		}
 	}
 	
@@ -59,7 +68,6 @@ public class MainWebMaker
 		if (emaker.isEnum(doc))
 		{
 			emaker.makeEnum(doc, "web/enum1.html");
-			return;
 		}
 	}
 }

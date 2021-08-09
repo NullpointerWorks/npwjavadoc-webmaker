@@ -46,7 +46,8 @@ public class ModuleReader
 			List<Element> exps = exports.getChildren();
 			for (Element e : exps)
 			{
-				maker.setExport( new Exported("",e.getText()) );
+				String link = "pack-"+( e.getText().replace(".", "-") )+".html";
+				maker.setExport( new Exported(link, e.getText()) );
 			}
 		}
 		
