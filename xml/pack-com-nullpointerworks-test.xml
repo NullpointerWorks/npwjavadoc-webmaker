@@ -5,7 +5,14 @@
 		<name>com.nullpointerworks.test</name>
 	</info>
 	
+	<interfaces>
+	</interfaces>
 	
+	<classes>
+		<class>AbstractTestClass</class>
+	</classes>
 	
+	<enumerations>
+	</enumerations>
 	
 </source>

@@ -19,7 +19,7 @@ public class MainWebMaker
 	{
 		makeModule();
 		makePackage();
-		//makeClass();
+		makeClass();
 		
 	}
 	
@@ -43,7 +43,7 @@ public class MainWebMaker
 		PackageReader preader = new PackageReader();
 		if (preader.isPackage(doc))
 		{
-			preader.makePackage(doc,"");
+			preader.makePackage(doc,"web/pack-com-nullpointerworks-test.html");
 		}
 	}
 	

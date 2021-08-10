@@ -73,7 +73,7 @@ public class ModuleWebBuilder extends ItemInformation
 			builder.addLine("                    "+getDescription());
 			builder.addLine("                </div>");
 		}
-
+		
 		if (getVersion()!=null)
 		if (getVersion().length()>0)
 			builder.addLine("                <div class=\"desc mark\">Version:<div class=\"marktext\">"+getVersion()+"</div></div>");
