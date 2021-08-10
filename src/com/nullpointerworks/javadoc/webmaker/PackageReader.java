@@ -26,7 +26,9 @@ public class PackageReader
 		if (info!=null)
 		{
 			Element name = info.getChild("name");
+			Element module = info.getChild("module");
 			if (name!=null) maker.setName(name.getText());
+			if (module!=null) maker.setModule(module.getText());
 		}
 		
 		Element interfaces = root.getChild("interfaces");

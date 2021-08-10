@@ -2,6 +2,7 @@
 <source>
 	<info>
 		<type>package</type>
+		<module>libnpw.test</module>
 		<name>com.nullpointerworks.test</name>
 	</info>
 	

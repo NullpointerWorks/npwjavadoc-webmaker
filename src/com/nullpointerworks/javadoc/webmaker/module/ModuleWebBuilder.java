@@ -62,6 +62,13 @@ public class ModuleWebBuilder extends ItemInformation
 		builder.addLine("            </div>");
 	}
 	
+	private void makeEnd()
+	{
+		builder.addLine("        </div>");
+		builder.addLine("    </body>");
+		builder.addLine("</html>");
+	}
+	
 	private void makeDescription()
 	{
 		builder.addLine("            <div class=\"content midlight\">");
@@ -138,12 +145,5 @@ public class ModuleWebBuilder extends ItemInformation
 			builder.addLine("                <br></div>");
 			builder.addLine("            </div>");
 		}
-	}
-	
-	private void makeEnd()
-	{
-		builder.addLine("        </div>");
-		builder.addLine("    </body>");
-		builder.addLine("</html>");
 	}
 }
