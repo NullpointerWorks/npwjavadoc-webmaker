@@ -61,13 +61,13 @@ public class MainWebMaker
 	
 	public void makeEnum1()
 	{
-		Document doc = FileIO.load("xml/enum1.xml");
+		Document doc = FileIO.load("xml/DayOfTheWeek.xml");
 		if (doc==null) return;
 		
 		EnumReader emaker = new EnumReader();
 		if (emaker.isEnum(doc))
 		{
-			emaker.makeEnum(doc, "web/enum1.html");
+			emaker.makeEnum(doc, "web/enum-dayoftheweek.html");
 		}
 	}
 }

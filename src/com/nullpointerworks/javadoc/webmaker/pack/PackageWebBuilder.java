@@ -79,7 +79,7 @@ public class PackageWebBuilder
 		
 		for (PackageItem p : interfaces)
 		{
-			builder.addLines( p.getWebText() , 5);
+			builder.addLines( p.getWebText("interface") , 5);
 		}
 		
 		builder.addLine("                <br></div>");
@@ -100,7 +100,7 @@ public class PackageWebBuilder
 		
 		for (PackageItem p : classes)
 		{
-			builder.addLines( p.getWebText() , 5);
+			builder.addLines( p.getWebText("class") , 5);
 		}
 		
 		builder.addLine("                <br></div>");
@@ -121,7 +121,7 @@ public class PackageWebBuilder
 		
 		for (PackageItem p : enumerations)
 		{
-			builder.addLines( p.getWebText() , 5);
+			builder.addLines( p.getWebText("enum") , 5);
 		}
 		
 		builder.addLine("                <br></div>");

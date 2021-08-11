@@ -23,10 +23,10 @@ public class PackageItem extends LineBuilder
 	public void setName(String f) {name = f;}
 	public void setDescription(String f) {desc = f;}
 	
-	public List<String> getWebText()
+	public List<String> getWebText(String type)
 	{
 		clear();
-		makeExported();
+		makeExported(type);
 		return getLines();
 	}
 	
@@ -34,10 +34,12 @@ public class PackageItem extends LineBuilder
 	//
 	// ============================================================
 	
-	private void makeExported()
+	private void makeExported(String type)
 	{
+		String link = type + "-" + getName().toLowerCase() + ".html";
+		
 		addLine("<div class=\"rTableRow\">");
-		addLine("    <div class=\"rTableCell\">"+getName()+"</div>");
+		addLine("    <div class=\"rTableCell\"><a href=\""+link+"\">"+getName()+"</a></div>");
 		addLine("    <div class=\"rTableCell\">"+getDescription()+"</div>");
 		addLine("</div>");
 	}

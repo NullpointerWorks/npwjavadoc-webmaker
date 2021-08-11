@@ -35,9 +35,13 @@ public class PackageReader
 		Element interfaces = root.getChild("interfaces");
 		if (interfaces!=null)
 		{
-			
-			
-			
+			List<Element> l = interfaces.getChildren();
+			for (Element r : l)
+			{
+				Element name = r.getChild("name");
+				Element desc = r.getChild("description");
+				maker.setPackageItemInterface( new PackageItem(name.getText(), desc.getText()) );
+			}
 		}
 		
 		Element classes = root.getChild("classes");
@@ -47,8 +51,7 @@ public class PackageReader
 			for (Element r : l)
 			{
 				Element name = r.getChild("name");
-				Element desc = r.getChild("desciption");
-				
+				Element desc = r.getChild("description");
 				maker.setPackageItemClass( new PackageItem(name.getText(), desc.getText()) );
 			}
 		}
@@ -56,9 +59,13 @@ public class PackageReader
 		Element enumerations = root.getChild("enumerations");
 		if (enumerations!=null)
 		{
-			
-			
-			
+			List<Element> l = enumerations.getChildren();
+			for (Element r : l)
+			{
+				Element name = r.getChild("name");
+				Element desc = r.getChild("description");
+				maker.setPackageItemEnum( new PackageItem(name.getText(), desc.getText()) );
+			}
 		}
 
 		List<String> page = maker.getWebText();

@@ -84,16 +84,18 @@ public class ClassWebBuilder extends ItemInformation
 		if (sModule!=null)
 		if (sModule.length()>0) 
 		{
+			String lModule = "module-" + sModule.replace(".", "-") + ".html";
 			builder.addLine("            <div class=\"header small vdark petrol-font\">");
-			builder.addLine("                Module <a href=\"\">"+sModule+"</a>");
+			builder.addLine("                Module <a href=\""+lModule+"\">"+sModule+"</a>");
 			builder.addLine("            </div>");
 		}
 		
 		if (sPackage!=null)
 		if (sPackage.length()>0) 
 		{
+			String lPackage = "pack-" + sPackage.replace(".", "-") + ".html";
 			builder.addLine("            <div class=\"header small vdark petrol-font\">");
-			builder.addLine("                Package <a href=\"\">"+sPackage+"</a>");
+			builder.addLine("                Package <a href=\""+lPackage+"\">"+sPackage+"</a>");
 			builder.addLine("            </div>");
 		}
 		

@@ -2,7 +2,7 @@
 <source>
 	<info>
 		<type>CLASS</type>
-		<module>libnpw.test</module>
+		<module>npw.webmaker</module>
 		<package>com.nullpointerworks.test</package>
 		<name>AbstractTestClass</name>
 		<modifier>ABSTRACT</modifier>

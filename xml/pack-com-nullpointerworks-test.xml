@@ -12,13 +12,18 @@
 	<classes>
 		<class>
 			<name>AbstractTestClass</name>
-			<desciption>A test class for parsing.</desciption>
+			<description>A test class for parsing.</description>
 		</class>
 		
 		
 	</classes>
 	
 	<enumerations>
+		<enumeration>
+			<name>DayOfTheWeek</name>
+			<description>A test enum for parsing.</description>
+		</enumeration>
+		
 	</enumerations>
 	
 </source>

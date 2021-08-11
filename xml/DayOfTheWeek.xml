@@ -3,8 +3,8 @@
 	<info>
 		<type>ENUM</type>
 		<name>DayOfTheWeek</name>
-		<package>my.package</package>
-		<module>libnpw.test</module>
+		<package>com.nullpointerworks.test</package>
+		<module>npw.webmaker</module>
 		
 		<info>
 			<author>Michiel Drost - Nullpointer Works</author>
