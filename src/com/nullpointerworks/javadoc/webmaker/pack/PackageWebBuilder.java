@@ -1,5 +1,6 @@
 package com.nullpointerworks.javadoc.webmaker.pack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.nullpointerworks.javadoc.webmaker.LineBuilder;
@@ -9,10 +10,17 @@ public class PackageWebBuilder
 	private LineBuilder builder;
 	private String name = "";
 	private String sModule = "";
+
+	private List<PackageItem> interfaces;
+	private List<PackageItem> classes;
+	private List<PackageItem> enumerations;
 	
 	public PackageWebBuilder()
 	{
 		builder = new LineBuilder();
+		interfaces = new ArrayList<PackageItem>();
+		classes = new ArrayList<PackageItem>();
+		enumerations = new ArrayList<PackageItem>();
 	}
 	
 	public void setName(String n) {name=n;}
@@ -22,8 +30,9 @@ public class PackageWebBuilder
 	{
 		builder.clear();
 		makeHead(sModule, "Package", name);
-		
-		
+		makeInterfaceList();
+		makeClassList();
+		makeEnumList();
 		makeEnd();
 		return builder.getLines();
 	}
@@ -55,19 +64,32 @@ public class PackageWebBuilder
 		builder.addLine("            </div>");
 	}
 	
+	private void makeInterfaceList()
+	{
+		
+		
+	}
+	
+	private void makeClassList()
+	{
+		
+		
+	}
+	
+	private void makeEnumList()
+	{
+		
+		
+	}
+	
 	private void makeEnd()
 	{
 		builder.addLine("        </div>");
 		builder.addLine("    </body>");
 		builder.addLine("</html>");
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public void setPackageItemInterface(PackageItem item) {interfaces.add(item);}
+	public void setPackageItemClass(PackageItem item) {classes.add(item);}
+	public void setPackageItemEnum(PackageItem item) {enumerations.add(item);}
 }

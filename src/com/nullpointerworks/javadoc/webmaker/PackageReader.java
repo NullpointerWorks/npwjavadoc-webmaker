@@ -2,6 +2,7 @@ package com.nullpointerworks.javadoc.webmaker;
 
 import java.util.List;
 
+import com.nullpointerworks.javadoc.webmaker.pack.PackageItem;
 import com.nullpointerworks.javadoc.webmaker.pack.PackageWebBuilder;
 
 import exp.nullpointerworks.xml.Document;
@@ -42,9 +43,11 @@ public class PackageReader
 		Element classes = root.getChild("classes");
 		if (classes!=null)
 		{
-			
-			
-			
+			List<Element> l = classes.getChildren();
+			for (Element r : l)
+			{
+				maker.setPackageItemClass( new PackageItem(r.getText()) );
+			}
 		}
 		
 		Element enumerations = root.getChild("enumerations");
