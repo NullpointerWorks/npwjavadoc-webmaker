@@ -3,8 +3,8 @@
 	<info>
 		<type>ENUM</type>
 		<name>DayOfTheWeek</name>
-		<package>com.nullpointerworks.test</package>
 		<module>npw.webmaker</module>
+		<package>com.nullpointerworks.test</package>
 		
 		<info>
 			<author>Michiel Drost - Nullpointer Works</author>
@@ -26,11 +26,6 @@
 				<comment>Testing commentary.</comment>
 			</info>
 		</enum>
-		
-		
-		
-		
-		
 		
 		
 	</enums>

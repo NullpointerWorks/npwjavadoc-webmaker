@@ -20,7 +20,7 @@ public class MainWebMaker
 		makeModule();
 		makePackage();
 		makeClass();
-		
+		makeEnum1();
 	}
 	
 	public void makeModule()
