@@ -2,7 +2,7 @@
 <source>
 	<info>
 		<type>package</type>
-		<module>libnpw.test</module>
+		<module>npw.webmaker</module>
 		<name>com.nullpointerworks.test</name>
 	</info>
 	
@@ -10,7 +10,12 @@
 	</interfaces>
 	
 	<classes>
-		<class>AbstractTestClass</class>
+		<class>
+			<name>AbstractTestClass</name>
+			<desciption>A test class for parsing.</desciption>
+		</class>
+		
+		
 	</classes>
 	
 	<enumerations>

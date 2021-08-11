@@ -54,8 +54,9 @@ public class PackageWebBuilder
 		if (sModule!=null)
 		if (sModule.length()>0) 
 		{
+			String lModule = "module-" + sModule.replace(".", "-") + ".html";
 			builder.addLine("            <div class=\"header small vdark petrol-font\">");
-			builder.addLine("                Module <a href=\"\">"+sModule+"</a>");
+			builder.addLine("                Module <a href=\""+lModule+"\">"+sModule+"</a>");
 			builder.addLine("            </div>");
 		}
 		
@@ -66,20 +67,65 @@ public class PackageWebBuilder
 	
 	private void makeInterfaceList()
 	{
+		if (interfaces.size() < 1) return;
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Interfaces</div>");
+		builder.addLine("                <div class=\"header small yellow\">Summary</div>");
+		builder.addLine("                <div class=\"rTable\">");
+		builder.addLine("                    <div class=\"rTableRow\">");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Interface</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:75%;\"><strong>Description</strong></div>");
+		builder.addLine("                    </div>");
 		
+		for (PackageItem p : interfaces)
+		{
+			builder.addLines( p.getWebText() , 5);
+		}
 		
+		builder.addLine("                <br></div>");
+		builder.addLine("            </div>");
 	}
 	
 	private void makeClassList()
 	{
+		if (classes.size() < 1) return;
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Classes</div>");
+		builder.addLine("                <div class=\"header small yellow\">Summary</div>");
+		builder.addLine("                <div class=\"rTable\">");
+		builder.addLine("                    <div class=\"rTableRow\">");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Class</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:75%;\"><strong>Description</strong></div>");
+		builder.addLine("                    </div>");
 		
+		for (PackageItem p : classes)
+		{
+			builder.addLines( p.getWebText() , 5);
+		}
 		
+		builder.addLine("                <br></div>");
+		builder.addLine("            </div>");
 	}
 	
 	private void makeEnumList()
 	{
+		if (enumerations.size() < 1) return;
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Enumerations</div>");
+		builder.addLine("                <div class=\"header small yellow\">Summary</div>");
+		builder.addLine("                <div class=\"rTable\">");
+		builder.addLine("                    <div class=\"rTableRow\">");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Enum</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:75%;\"><strong>Description</strong></div>");
+		builder.addLine("                    </div>");
 		
+		for (PackageItem p : enumerations)
+		{
+			builder.addLines( p.getWebText() , 5);
+		}
 		
+		builder.addLine("                <br></div>");
+		builder.addLine("            </div>");
 	}
 	
 	private void makeEnd()

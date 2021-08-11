@@ -46,7 +46,10 @@ public class PackageReader
 			List<Element> l = classes.getChildren();
 			for (Element r : l)
 			{
-				maker.setPackageItemClass( new PackageItem(r.getText()) );
+				Element name = r.getChild("name");
+				Element desc = r.getChild("desciption");
+				
+				maker.setPackageItemClass( new PackageItem(name.getText(), desc.getText()) );
 			}
 		}
 		
