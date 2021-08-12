@@ -56,12 +56,23 @@ public class EnumReader
 			
 		}
 		
+		Element fields = root.getChild("fields");
+		if (fields!=null)
+		{
+			
+		}
 		
+		Element constructors = root.getChild("constructors");
+		if (constructors!=null)
+		{
+			
+		}
 		
-		
-		
-		
-		
+		Element methods = root.getChild("methods");
+		if (methods!=null)
+		{
+			
+		}
 		
 		List<String> page = builder.getWebText();
 		FileIO.save(path, page);
