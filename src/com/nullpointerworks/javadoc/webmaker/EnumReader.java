@@ -3,7 +3,6 @@ package com.nullpointerworks.javadoc.webmaker;
 import java.util.List;
 
 import com.nullpointerworks.javadoc.webmaker.enums.EnumWebBuilder;
-import com.nullpointerworks.javadoc.webmaker.pack.PackageItem;
 
 import exp.nullpointerworks.xml.Document;
 import exp.nullpointerworks.xml.Element;
@@ -44,16 +43,12 @@ public class EnumReader
 		Element enums = root.getChild("enums");
 		if (enums!=null)
 		{
-			
 			List<Element> l = enums.getChildren();
 			for (Element r : l)
 			{
 				Element name = r.getChild("name");
 				builder.addEnumField(name.getText());
 			}
-			
-			
-			
 		}
 		
 		Element fields = root.getChild("fields");

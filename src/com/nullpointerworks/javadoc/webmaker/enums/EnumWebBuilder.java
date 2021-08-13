@@ -64,7 +64,9 @@ public class EnumWebBuilder extends ItemInformation
 		builder.clear();
 		makeHead(sModule, sPackage, "Enum", sName);
 		makeDescription();
-		
+
+		makeFieldsSummary();
+		makeFields();
 		
 		makeEnd();
 		return builder.getLines();
@@ -156,7 +158,42 @@ public class EnumWebBuilder extends ItemInformation
 		builder.addLine("</html>");
 	}
 	
+	// =========================================================
+	// ENUM FIELDS
 	
+	private void makeFieldsSummary()
+	{
+		if (efields.size() < 1) return;
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Enum Summary</div>");
+		builder.addLine("                <div class=\"header small yellow\">Summary</div>");
+		builder.addLine("                <div class=\"rTable\">");
+		builder.addLine("                    <div class=\"rTableRow\">");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:100%;\"><strong>Name</strong></div>");
+		builder.addLine("                    </div>");
+		
+		for (EnumField f : efields)
+		{
+			builder.addLines( f.getWebTextSummary() , 5);
+		}
+		
+		builder.addLine("                <br></div>");
+		builder.addLine("            </div>");
+	}
+	
+	private void makeFields()
+	{
+		if (efields.size() < 1) return;
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Enum Detail</div>");
+		
+		for (EnumField f : efields)
+		{
+			builder.addLines( f.getWebText() , 4);
+		}
+		
+		builder.addLine("            <br></div>");
+	}
 	
 	
 	
