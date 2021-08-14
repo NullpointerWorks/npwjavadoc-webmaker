@@ -23,7 +23,7 @@
 				<version></version>
 				<since>1.0.0</since>
 				<see></see>
-				<comment>Testing commentary.</comment>
+				<comment>The day of the moon.</comment>
 			</info>
 		</enum>
 		<enum>
@@ -33,7 +33,7 @@
 				<version></version>
 				<since>1.0.0</since>
 				<see></see>
-				<comment>Testing commentary.</comment>
+				<comment>The day of mars.</comment>
 			</info>
 		</enum>
 		<enum>
@@ -43,7 +43,7 @@
 				<version></version>
 				<since>1.0.0</since>
 				<see></see>
-				<comment>Testing commentary.</comment>
+				<comment>The day of mercury.</comment>
 			</info>
 		</enum>
 		<enum>
@@ -53,7 +53,7 @@
 				<version></version>
 				<since>1.0.0</since>
 				<see></see>
-				<comment>Testing commentary.</comment>
+				<comment>The day of jupiter.</comment>
 			</info>
 		</enum>
 		<enum>
@@ -63,7 +63,7 @@
 				<version></version>
 				<since>1.0.0</since>
 				<see></see>
-				<comment>Testing commentary.</comment>
+				<comment>The day of venus.</comment>
 			</info>
 		</enum>
 		<enum>
@@ -73,7 +73,7 @@
 				<version></version>
 				<since>1.0.0</since>
 				<see></see>
-				<comment>Testing commentary.</comment>
+				<comment>The day of saturn.</comment>
 			</info>
 		</enum>
 		<enum>
@@ -83,20 +83,34 @@
 				<version></version>
 				<since>1.0.0</since>
 				<see></see>
-				<comment>Testing commentary.</comment>
+				<comment>The day of the sun.</comment>
 			</info>
 		</enum>
-		
-		
 	</enums>
 	
 	<fields>
+		<field>
+			<type>String</type>
+			<visibility>private</visibility>
+			<modifier>final</modifier>
+			<name>text</name>
+			<value></value>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</field>
 	</fields>
 	
 	<constructors>
+		
 	</constructors>
 	
 	<methods>
+		
 	</methods>
 	
 </source>

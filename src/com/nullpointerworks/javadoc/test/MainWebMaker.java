@@ -65,6 +65,7 @@ public class MainWebMaker
 		if (doc==null) return;
 		
 		EnumReader emaker = new EnumReader();
+		emaker.setIgnorePrivate(false);
 		if (emaker.isEnum(doc))
 		{
 			emaker.makeEnum(doc, "web/enum-dayoftheweek.html");

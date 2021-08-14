@@ -42,14 +42,10 @@ public class EnumWebBuilder extends ItemInformation
 	public void setModifier(String e) {modifiers.add(e);}
 	public void setTemplate(String e) {templates.add(e);}
 	
-	public void setField(Field e) {fields.add(e);}
-	public void setConstructor(Constructor e) {constructors.add(e);}
-	public void setMethod(Method e) {methods.add(e);}
-	
-	public void addEnumField(EnumField ef) 
-	{
-		efields.add(ef);
-	}
+	public void addEnumField(EnumField ef) {efields.add(ef);}
+	public void addField(Field f) {fields.add(f);}
+	public void addConstructor(Constructor e) {constructors.add(e);}
+	public void addMethod(Method e) {methods.add(e);}
 	
 	// ============================================================
 	//
@@ -60,9 +56,16 @@ public class EnumWebBuilder extends ItemInformation
 		builder.clear();
 		makeHead(sModule, sPackage, "Enum", sName);
 		makeDescription();
-
+		
 		makeEFieldsSummary();
 		makeEFields();
+		
+		makeFieldsSummary();
+		makeFields();
+		
+		
+		
+		
 		
 		makeEnd();
 		return builder.getLines();
@@ -191,6 +194,44 @@ public class EnumWebBuilder extends ItemInformation
 		builder.addLine("            <br></div>");
 	}
 	
+	// =========================================================
+	// FIELDS
+	
+	private void makeFieldsSummary()
+	{
+		if (fields.size() < 1) return;
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Field Summary</div>");
+		builder.addLine("                <div class=\"header small yellow\">Summary</div>");
+		builder.addLine("                <div class=\"rTable\">");
+		builder.addLine("                    <div class=\"rTableRow\">");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Modifier</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Type</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:50%;\"><strong>Name</strong></div>");
+		builder.addLine("                    </div>");
+		
+		for (Field f : fields)
+		{
+			builder.addLines( f.getWebTextSummary() , 5);
+		}
+		
+		builder.addLine("                <br></div>");
+		builder.addLine("            </div>");
+	}
+	
+	private void makeFields()
+	{
+		if (fields.size() < 1) return;
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Field Detail</div>");
+		
+		for (Field f : fields)
+		{
+			builder.addLines( f.getWebText() , 4);
+		}
+		
+		builder.addLine("            <br></div>");
+	}
 	
 	
 	

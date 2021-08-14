@@ -2,6 +2,10 @@ package com.nullpointerworks.javadoc.webmaker;
 
 import java.util.List;
 
+import com.nullpointerworks.javadoc.webmaker.clazz.Constructor;
+import com.nullpointerworks.javadoc.webmaker.clazz.Field;
+import com.nullpointerworks.javadoc.webmaker.clazz.Method;
+import com.nullpointerworks.javadoc.webmaker.clazz.Parameter;
 import com.nullpointerworks.javadoc.webmaker.enums.EnumField;
 import com.nullpointerworks.javadoc.webmaker.enums.EnumWebBuilder;
 
@@ -10,6 +14,13 @@ import exp.nullpointerworks.xml.Element;
 
 public class EnumReader 
 {
+	private boolean ignorePrivate = true;
+	
+	public void setIgnorePrivate(boolean b)
+	{
+		ignorePrivate = b;
+	}
+	
 	public boolean isEnum(Document doc) 
 	{
 		Element root = doc.getRootElement();
@@ -58,19 +69,85 @@ public class EnumReader
 		Element fields = root.getChild("fields");
 		if (fields!=null)
 		{
-			
+			List<Element> l = fields.getChildren();
+			for (Element field : l)
+			{
+				Element name = field.getChild("name");
+				Element type = field.getChild("type");
+				Element value = field.getChild("value");
+				Element visibility = field.getChild("visibility");
+				List<Element> modifiers = field.getChildren("modifier");
+				
+				if (ignorePrivate)
+				if (visibility.getText().equalsIgnoreCase("private"))
+				{
+					continue;
+				}
+
+				Field ef = new Field();
+				if (name!=null) ef.setName(name.getText());
+				if (type!=null) ef.setType(type.getText());
+				if (value!=null) ef.setValue(value.getText());
+				if (visibility!=null) ef.setVisibility(visibility.getText());
+				for (Element mod : modifiers) ef.setModifier(mod.getText());
+				setInformation(field,ef);
+				
+				builder.addField(ef);
+			}
 		}
 		
 		Element constructors = root.getChild("constructors");
 		if (constructors!=null)
 		{
-			
+			List<Element> children = constructors.getChildren();
+			for (Element constructor : children)
+			{
+				Constructor constructorBuilder = new Constructor();
+				
+				Element visibility 		= constructor.getChild("visibility");
+				Element name 			= constructor.getChild("name");
+				
+				if (ignorePrivate)
+				if (visibility.getText().equalsIgnoreCase("private"))
+				{
+					continue;
+				}
+				
+				if (visibility!=null) 	constructorBuilder.setVisibility(visibility.getText());
+				if (name!=null) 		constructorBuilder.setName(name.getText());
+				
+				setParameters(constructor, constructorBuilder);
+				setInformation(constructor, constructorBuilder);
+				builder.addConstructor(constructorBuilder);
+			}
 		}
 		
 		Element methods = root.getChild("methods");
 		if (methods!=null)
 		{
-			
+			List<Element> children = methods.getChildren();
+			for (Element method : children)
+			{
+				Method methodBuilder = new Method();
+				
+				Element visibility 		= method.getChild("visibility");
+				Element type 			= method.getChild("type");
+				Element name 			= method.getChild("name");
+				
+				if (ignorePrivate)
+				if (visibility.getText().equalsIgnoreCase("private"))
+				{
+					continue;
+				}
+				
+				if (visibility!=null) 	methodBuilder.setVisibility(visibility.getText());
+				if (type!=null) 		methodBuilder.setType(type.getText());
+				if (name!=null) 		methodBuilder.setName(name.getText());
+				
+				setParameters(method, methodBuilder);
+				setInformation(method, methodBuilder);
+				builder.addMethod(methodBuilder);
+			}
 		}
 		
 		List<String> page = builder.getWebText();
@@ -90,5 +167,31 @@ public class EnumReader
 		if (since!=null) builder.setSince(since.getText());
 		if (see!=null) builder.setSeeAlso(see.getText());
 		if (comment!=null) builder.setDescription(comment.getText());
+	}
+	
+	private void setParameters(Element constructor, Method builder) 
+	{
+		List<Element> list = constructor.getChildren("param");
+		for (Element param : list)
+		{
+			Element modifier = param.getChild("modifier");
+			Element type = param.getChild("type");
+			Element name = param.getChild("name");
+			Element comment = param.getChild("comment");
+			List<Element> templates = param.getChildren("template");
+			
+			Parameter p = new Parameter();
+			if (name!=null) p.setName( name.getText() );
+			if (type!=null) p.setType( type.getText() );
+			if (modifier!=null) p.setModifier( modifier.getText() );
+			if (comment!=null) p.setComment( comment.getText() );
+			
+			for (Element temp : templates)
+			{
+				p.setTemplate( temp.getText() );
+			}
+			
+			builder.setParameter(p);
+		}
 	}
 }
