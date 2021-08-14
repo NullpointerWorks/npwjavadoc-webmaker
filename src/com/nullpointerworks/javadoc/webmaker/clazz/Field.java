@@ -66,7 +66,7 @@ public class Field extends ItemInformation
 		builder.addLine("<div class=\"header small blue\">"+name+"</div>");
 		builder.addLine("<div class=\"content midlight\">");
 		makeDescription();
-		builder.addLine("</div>");
+		builder.addLine("<br></div>");
 	}
 
 	private void makeDescription()
