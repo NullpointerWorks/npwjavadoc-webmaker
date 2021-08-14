@@ -9,8 +9,6 @@ import com.nullpointerworks.javadoc.webmaker.clazz.Constructor;
 import com.nullpointerworks.javadoc.webmaker.clazz.Field;
 import com.nullpointerworks.javadoc.webmaker.clazz.Method;
 
-import exp.nullpointerworks.xml.Element;
-
 public class EnumWebBuilder extends ItemInformation 
 {
 	private LineBuilder builder;
@@ -48,10 +46,8 @@ public class EnumWebBuilder extends ItemInformation
 	public void setConstructor(Constructor e) {constructors.add(e);}
 	public void setMethod(Method e) {methods.add(e);}
 	
-	public void addEnumField(String name) 
+	public void addEnumField(EnumField ef) 
 	{
-		EnumField ef = new EnumField();
-		ef.setName(name);
 		efields.add(ef);
 	}
 	
@@ -65,8 +61,8 @@ public class EnumWebBuilder extends ItemInformation
 		makeHead(sModule, sPackage, "Enum", sName);
 		makeDescription();
 
-		makeFieldsSummary();
-		makeFields();
+		makeEFieldsSummary();
+		makeEFields();
 		
 		makeEnd();
 		return builder.getLines();
@@ -161,7 +157,7 @@ public class EnumWebBuilder extends ItemInformation
 	// =========================================================
 	// ENUM FIELDS
 	
-	private void makeFieldsSummary()
+	private void makeEFieldsSummary()
 	{
 		if (efields.size() < 1) return;
 		builder.addLine("            <div class=\"section dark\">");
@@ -181,7 +177,7 @@ public class EnumWebBuilder extends ItemInformation
 		builder.addLine("            </div>");
 	}
 	
-	private void makeFields()
+	private void makeEFields()
 	{
 		if (efields.size() < 1) return;
 		builder.addLine("            <div class=\"section dark\">");

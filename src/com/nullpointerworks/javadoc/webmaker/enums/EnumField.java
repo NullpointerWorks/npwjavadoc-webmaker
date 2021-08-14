@@ -49,7 +49,7 @@ public class EnumField extends ItemInformation
 	private void makeDescription()
 	{
 		builder.addLine("    <div class=\"desc\">");
-		builder.addLine("        <i>"+name+"</i><br><br>");
+		//builder.addLine("        <i>"+name+"</i><br><br>");
 		
 		if (getDescription()!=null)
 		if (getDescription().length()>0)

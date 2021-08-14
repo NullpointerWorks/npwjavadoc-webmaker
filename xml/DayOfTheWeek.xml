@@ -26,6 +26,66 @@
 				<comment>Testing commentary.</comment>
 			</info>
 		</enum>
+		<enum>
+			<name>TEUSDAY</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</enum>
+		<enum>
+			<name>WEDNESDAY</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</enum>
+		<enum>
+			<name>THURSDAY</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</enum>
+		<enum>
+			<name>FRYDAY</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</enum>
+		<enum>
+			<name>SATURDAY</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</enum>
+		<enum>
+			<name>SUNDAY</name>
+			<info>
+				<author></author>
+				<version></version>
+				<since>1.0.0</since>
+				<see></see>
+				<comment>Testing commentary.</comment>
+			</info>
+		</enum>
 		
 		
 	</enums>

@@ -2,6 +2,7 @@ package com.nullpointerworks.javadoc.webmaker;
 
 import java.util.List;
 
+import com.nullpointerworks.javadoc.webmaker.enums.EnumField;
 import com.nullpointerworks.javadoc.webmaker.enums.EnumWebBuilder;
 
 import exp.nullpointerworks.xml.Document;
@@ -46,8 +47,11 @@ public class EnumReader
 			List<Element> l = enums.getChildren();
 			for (Element r : l)
 			{
+				EnumField ef = new EnumField();
 				Element name = r.getChild("name");
-				builder.addEnumField(name.getText());
+				ef.setName(name.getText());
+				setInformation(r,ef);
+				builder.addEnumField(ef);
 			}
 		}
 		
