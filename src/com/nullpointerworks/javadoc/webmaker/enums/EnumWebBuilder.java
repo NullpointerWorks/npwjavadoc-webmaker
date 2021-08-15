@@ -63,9 +63,11 @@ public class EnumWebBuilder extends ItemInformation
 		makeFieldsSummary();
 		makeFields();
 		
+		makeConstructorsSummary();
+		makeConstructors();
 		
-		
-		
+		makeMethodsSummary();
+		makeMethods();
 		
 		makeEnd();
 		return builder.getLines();
@@ -233,11 +235,78 @@ public class EnumWebBuilder extends ItemInformation
 		builder.addLine("            <br></div>");
 	}
 	
+	private void makeConstructorsSummary()
+	{
+		if (constructors.size() < 1) return;
+		
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Constructor Summary</div>");
+		builder.addLine("                <div class=\"header small yellow\">Summary</div>");
+		builder.addLine("                <div class=\"rTable\">");
+		builder.addLine("                    <div class=\"rTableRow\">");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Modifier</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:75%;\"><strong>Constructor</strong></div>");
+		builder.addLine("                    </div>");
+		
+		for (Constructor c : constructors)
+		{
+			builder.addLines( c.getWebTextSummary() , 5);
+		}
+		
+		builder.addLine("                <br></div>");
+		builder.addLine("            </div>");
+	}
 	
+	private void makeConstructors()
+	{
+		if (constructors.size() < 1) return;
+		
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Constructor Detail</div>");
+		
+		for (Constructor c : constructors)
+		{
+			builder.addLines( c.getWebText() , 4);
+		}
+		
+		builder.addLine("            <br></div>");
+	}
 	
+	private void makeMethodsSummary()
+	{
+		if (methods.size() < 1) return;
+		
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Method Summary</div>");
+		builder.addLine("                <div class=\"header small yellow\">Summary</div>");
+		builder.addLine("                <div class=\"rTable\">");
+		builder.addLine("                    <div class=\"rTableRow\">");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Modifier</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:25%;\"><strong>Type</strong></div>");
+		builder.addLine("                        <div class=\"rTableHead\" style=\"width:50%;\"><strong>Method</strong></div>");
+		builder.addLine("                    </div>");
+		
+		for (Method m : methods)
+		{
+			builder.addLines( m.getWebTextSummary() , 5);
+		}
+		
+		builder.addLine("                <br></div>");
+		builder.addLine("            </div>");
+	}
 	
-	
-	
-	
-	
+	private void makeMethods()
+	{
+		if (methods.size() < 1) return;
+		
+		builder.addLine("            <div class=\"section dark\">");
+		builder.addLine("                <div class=\"sectiontitle\">Method Detail</div>");
+		
+		for (Method m : methods)
+		{
+			builder.addLines( m.getWebText() , 4);
+		}
+		
+		builder.addLine("            <br></div>");
+	}
 }
